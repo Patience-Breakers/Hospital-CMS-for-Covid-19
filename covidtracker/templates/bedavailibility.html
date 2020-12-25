@@ -18,34 +18,23 @@
         <div class="inner-container p-6">
 
 
-            {% for room in list %}
-            <h1 class="text-center my-2">Floor </h1>
+
+            <h1 class="text-center my-2">Floor 1</h1>
 
             <div class="floor1 row">
-                {% for value in room %}
+                {% for room in all_rooms_objects %}
+
+
                 <div class="col-sm room ">
                     {{room.room_no}}
                 </div>
 
-                {% endfor %}
-            </div>
-            {% endfor %}
-
-
-
-
-            {% for room in floor1_rooms %}
-            <h1 class="text-center my-2">Floor {{i}}</h1>
-
-            <div class="floor1 row">
-                {% for room in floors_rooms %}
-                <div class="col-sm room ">
-                    {{room.room_no}}
-                </div>
 
                 {% endfor %}
             </div>
-            {% endfor %}
+
+
+
         </div>
     </div>
 </div>
