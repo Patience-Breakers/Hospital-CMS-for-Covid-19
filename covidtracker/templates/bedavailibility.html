@@ -8,8 +8,69 @@
 
 {% block body %}
 <div class="container my-6">
+    <div class="banner">
+        <img src="{% static 'svg/hospital banner.svg' %}" width="100%" height="150px" alt="">
+    </div>
 
+
+
+    <div class="border-outside">
+        <div class="inner-container p-6">
+
+
+            {% for room in list %}
+            <h1 class="text-center my-2">Floor </h1>
+
+            <div class="floor1 row">
+                {% for value in room %}
+                <div class="col-sm room ">
+                    {{room.room_no}}
+                </div>
+
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+
+
+
+            {% for room in floor1_rooms %}
+            <h1 class="text-center my-2">Floor {{i}}</h1>
+
+            <div class="floor1 row">
+                {% for room in floors_rooms %}
+                <div class="col-sm room ">
+                    {{room.room_no}}
+                </div>
+
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
+
+
+<!--todo legend Starts here-->
+<div class="container">
+    <h1 class="text-center heading-legend">Legend</h1>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-4 blue">
+                Unoccupied
+            </div>
+            <div class="col-4 yellow">
+                Admitted
+            </div>
+            <div class="col-4 red">
+                Ventilator
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--todo legend Ends here-->
+
 {% endblock %}
 
 {% block JS %}

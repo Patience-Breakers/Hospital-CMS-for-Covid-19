@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,7 @@
   <meta name="keywords" content="github, hackathon, The unscript hospital" />
   <meta name="author" content="Aakash Yadav, Shreya Sapale, Akshata Sangwai" />
   <!--todo title & favicon-->
-  <title>The Unscript Hospital | Home page</title>
+  <title>The ASA Hospital | Home page</title>
   <link rel="shortcut icon"
     href="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605866352/Images%20for%20UNSCRIPT%20ROOKIE/favicon/logo_transparent_background_u9eopl.png" />
   <!--todo Facebook and Twitter integration -->
@@ -23,7 +24,7 @@
   <meta property="og:description" content="" />
 
   <!--todo CSS sytlesheets links-->
-  <link rel="stylesheet" href="https://res.cloudinary.com/dnv3ztqf1/raw/upload/v1605867164/css/css/hdft_rlcdvq.css" />
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
   <!--todo fonts links-->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -41,8 +42,8 @@
       <a class="navbar-brand" href="#">
         <section id="leftlogo">
           <img
-            src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605866344/Images%20for%20UNSCRIPT%20ROOKIE/logos/navbarlogo_kn59xi.png"
-            class="d-inline-block align-top" loading="lazy" />
+            src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1608906379/Images%20for%20UNSCRIPT%20ROOKIE/logos/navbarlogo_kn59xi.png"
+            width="100%" class="d-inline-block align-top" loading="lazy" />
         </section>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -109,8 +110,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.300612010012!2d72.81919721472929!3d19.050516187102584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9410830616d%3A0x111b63353dbbce01!2sFr.%20Conceicao%20Rodrigues%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1605862933185!5m2!1sen!2sin"
+          <iframe <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7544.697743477904!2d72.83544862402483!3d19.004342648516072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cee53670c759%3A0x3509dc5c13cbc2e0!2sKing%20Edward%20Memorial%20Hospital!5e0!3m2!1sen!2sin!4v1608906128318!5m2!1sen!2sin"
             width="100%" height="315" frameborder="0" style="border: 0" allowfullscreen="" aria-hidden="false"
             tabindex="0"></iframe>
         </div>
@@ -145,7 +146,7 @@
         <div class="col-md-5 footer_about_section">
           <h3><b>About Us</b></h3>
           <p class="text-justify about_footer">
-            The Unscript Hospital Provides You with quality testing and
+            The ASA Hospital Provides You with quality testing and
             services mainly oriented for coronavirus Cases.
           </p>
           <a href="#"><button id="commonbuttons"><b>Know More</b></button></a>

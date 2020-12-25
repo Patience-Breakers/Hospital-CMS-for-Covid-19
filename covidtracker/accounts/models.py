@@ -31,8 +31,8 @@ class Room (models.Model):
     occupied = models.BooleanField(default=False)
     patient_id = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.floorno+"-"+room_no
+    def __int__(self):
+        return self.floor_no
 
 
 class Doctor (models.Model):
