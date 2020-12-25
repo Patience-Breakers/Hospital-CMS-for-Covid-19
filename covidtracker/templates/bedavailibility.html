@@ -18,11 +18,11 @@
         <div class="inner-container p-6">
 
 
-            {% for room in list %}
-            <h1 class="text-center my-2">Floor </h1>
+            {% for list in finallist %}
+            <h1 class="text-center my-2">Floor {{forloop.counter}}</h1>
 
             <div class="floor1 row">
-                {% for value in room %}
+                {% for room in list %}
                 <div class="col-sm room ">
                     {{room.room_no}}
                 </div>
@@ -34,18 +34,7 @@
 
 
 
-            {% for room in floor1_rooms %}
-            <h1 class="text-center my-2">Floor {{i}}</h1>
-
-            <div class="floor1 row">
-                {% for room in floors_rooms %}
-                <div class="col-sm room ">
-                    {{room.room_no}}
-                </div>
-
-                {% endfor %}
-            </div>
-            {% endfor %}
+           
         </div>
     </div>
 </div>
