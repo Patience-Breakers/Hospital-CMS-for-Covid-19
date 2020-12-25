@@ -25,14 +25,3 @@ def bedavailibility(request):
     context = {'list': list, 'all_rooms_objects': all_rooms_objects,
                'max_rooms_on_floor': max_rooms_on_floor}
     return render(request, 'bedavailibility.html', context)
-
-
-# def bedavailibility22(request):
-#     all_floors = []
-#     floornumbers = Room.objects.values('floor_no')
-#     # print(floornumbers)
-#     # for floor in floornumbers:
-#     # if all_floors.__contains__
-#     # print(floors)
-#     context = {}
-#     return render(request, 'bedavailibility.html', context)
