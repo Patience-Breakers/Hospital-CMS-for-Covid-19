@@ -16,25 +16,19 @@
 
     <div class="border-outside">
         <div class="inner-container p-6">
-
-
-
             <h1 class="text-center my-2">Floor 1</h1>
-
             <div class="floor1 row">
                 {% for room in all_rooms_objects %}
-
-
+                {% if forloop.counter0 == max_rooms_on_floor %}
+            </div>
+            <h1 class="text-center my-2">Floor {{room.floor_no}}</h1>
+            <div class="floor1 row">
+                {% endif %}
                 <div class="col-sm room ">
                     {{room.room_no}}
                 </div>
-
-
                 {% endfor %}
             </div>
-
-
-
         </div>
     </div>
 </div>

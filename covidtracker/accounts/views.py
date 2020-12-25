@@ -20,10 +20,10 @@ def search(request):
 
 def bedavailibility(request):
     all_rooms_objects = Room.objects.all()
-    list = []
-    # for room_object in all_rooms_objects:
+    max_rooms_on_floor = 6
 
-    context = {'list': list, 'all_rooms_objects': all_rooms_objects}
+    context = {'list': list, 'all_rooms_objects': all_rooms_objects,
+               'max_rooms_on_floor': max_rooms_on_floor}
     return render(request, 'bedavailibility.html', context)
 
 
