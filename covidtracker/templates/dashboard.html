@@ -2,9 +2,55 @@
 {% load static %}
 
 {% block title %}Dashboard of the Covid Tracker{% endblock %}
+{% block cssLinks %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['treemap']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
+            ['Patients', null, 0, 0],
+            ['Recovered', 'Patients', 5, 1],
+            ['Admitted', 'Patients', 5, 0],
+            ['Decreased', 'Patients', 5, -1],
+            ['Ventilator', 'Admitted', 3, 0],
+            ['Not Ventilator', 'Admitted', 3, 0],
+
+
+        ]);
+
+        tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+
+        tree.draw(data, {
+            minColor: '#dc3545',
+            midColor: '#ffc107',
+            maxColor: '#28a745',
+            headerHeight: 15,
+            fontSize: 20,
+            fontColor: 'black',
+            showScale: false
+        });
+
+    }
+
+</script>
+
+{% endblock %}
 
 
 {% block body %}
+<!--todo graph for active, recovered, decreased and on ventilator Starts here -->
+<div class="container my-3">
+    <div id="chart_div" style="width: 100%; height: 120px;"></div>
+    <img src="" style="color:#f83e3e;" alt="">
+</div>
+<!--todo graph for active, recovered, decreased and on ventilator Ends here -->
 
 {% endblock %}
 
