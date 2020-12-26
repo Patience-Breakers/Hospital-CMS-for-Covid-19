@@ -25,3 +25,8 @@ def bedavailibility(request):
     context = {'list': list, 'all_rooms_objects': all_rooms_objects,
                'max_rooms_on_floor': max_rooms_on_floor}
     return render(request, 'bedavailibility.html', context)
+
+
+def patients(request, myid):
+    patient = Patient.objects.filter(patient_id=myid)
+    return render(request, 'patient.html', {'patient': patient[0]})

@@ -5,7 +5,7 @@ from django.db import models
 
 class Patient (models.Model):
     patient_id = models.AutoField(primary_key=True)
-    name = models.TextField(max_length=10)
+    name = models.TextField(max_length=1000)
     age = models.IntegerField()
     gender = models.CharField(max_length=10)  # M of F
     phone = models.TextField(max_length=1000)
