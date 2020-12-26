@@ -140,7 +140,11 @@
                         var ctx = document.getElementById('myChart2').getContext('2d');
                         ctx.canvas.parentNode.style.width = "400px";
                         ctx.canvas.parentNode.style.height = "400px";
-
+                        width = screen.width;
+                        if (width < 600) {
+                            ctx.canvas.parentNode.style.width = "300px";
+                            ctx.canvas.parentNode.style.height = "300px";
+                        }
                         var myChart = new Chart(ctx, {
                             type: 'pie',
                             data: {
