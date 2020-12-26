@@ -3,8 +3,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import Patient, Room
-# from django.db.models import Q
-# from accounts.models import Patient
+import collections
 
 
 def index(request):
@@ -12,7 +11,20 @@ def index(request):
 
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    all_patients = Patient.objects.all()
+    all_age = []
+    for patient in all_patients:
+        all_age.append(patient.age)
+    tally_age = collections.Counter()
+    for i in all_age:
+        tally_age[i] = tally_age[i]+1
+
+    list_keys_age = list(tally_age)
+    list_values_age = list(tally_age.values())
+
+    context = {'all_patients': all_patients,
+               'list_keys_age': list_keys_age, 'list_values_age': list_values_age}
+    return render(request, 'dashboard.html', context)
 
 
 def search(request):
