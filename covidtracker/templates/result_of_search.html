@@ -15,7 +15,7 @@
 
         <li class="list-group-item list-group-item-action">
             <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;color:rgb(0, 91, 128);">
-                <h4>{{forloop.counter}}. {{patient.name}}</h4>
+                <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
             </a>
         </li>
         {% empty %}
