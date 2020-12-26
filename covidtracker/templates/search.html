@@ -10,11 +10,14 @@
     <h5 class="text-center my-1">for '{{query}}'</h5>
     <ul class="list-group">
         {% for patient in all_search_patients_acc_to_name %}
+
         <li class="list-group-item list-group-item-action">
             <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;color:rgb(0, 91, 128);">
                 <h4>{{forloop.counter}}. {{patient.name}}</h4>
             </a>
         </li>
+        {% empty %}
+        <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
         {% endfor %}
     </ul>
 </div>
