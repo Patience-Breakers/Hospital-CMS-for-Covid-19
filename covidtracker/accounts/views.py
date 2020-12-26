@@ -15,7 +15,15 @@ def dashboard(request):
 
 
 def search(request):
-    return render(request, 'searchresult.html')
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        all_search_patients_acc_to_name = Patient.objects.filter(
+            name__icontains=name)
+        context = {
+            'all_search_patients_acc_to_name': all_search_patients_acc_to_name}
+        return render(request, 'search.html', context)
+
+    return render(request, 'search.html')
 
 
 def bedavailibility(request):

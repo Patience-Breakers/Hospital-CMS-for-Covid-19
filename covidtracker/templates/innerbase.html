@@ -67,12 +67,12 @@
                         <a href="/dashboard" class="nav-link left">Dashboard</a>
                     </li>
                     <li>
-                        <form class="form-inline" action="search" method="POST">
+                        <form class="form-inline" action="/search" method="POST">
                             {% csrf_token %}
-                            <input class="form-control mr-sm-2" name="nameofpatient" type="search"
-                                placeholder="Search Patient" aria-label="Search" />
+                            <input class="form-control mr-sm-2" name="name" type="search" placeholder="Search Patient"
+                                aria-label="Search" />
                             <input class="btn btn-danger my-2 my-sm-0" type="submit">
-                            <a style="text-decoration: none" href="/search"></a>
+
                             </input>
                         </form>
                     </li>

@@ -5,7 +5,11 @@
 
 
 {% block body %}
+{% for patient in all_search_patients_acc_to_name %}
 
+<a href="/patients/{{patient.patient_id}}">{{patient.name}}</a>
+
+{% endfor %}
 {% endblock %}
 
 {% block JS %}
