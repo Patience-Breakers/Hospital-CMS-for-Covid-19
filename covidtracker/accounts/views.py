@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import Patient, Room
-from django.db.models import Q
+# from django.db.models import Q
 # from accounts.models import Patient
 
 
