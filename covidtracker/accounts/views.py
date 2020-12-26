@@ -22,9 +22,9 @@ def search(request):
             name__icontains=query)
         context = {
             'all_search_patients_acc_to_name': all_search_patients_acc_to_name, 'query': query}
-        return render(request, 'search.html', context)
+        return render(request, 'result_of_search.html', context)
 
-    return render(request, 'search.html')
+    return render(request, 'result_of_search.html')
 
 
 def bedavailibility(request):
