@@ -53,7 +53,7 @@
 
 <div class="container">
     <div class="row ">
-        <div class="col-2 align-self-center">
+        <div class="col-md-2 align-self-center">
             <div class="list-group p-2" id="list-tab" role="tablist">
                 <a class="list-group-item shadow m-1 list-group-item-action active" id="list-age-list"
                     data-bs-toggle="list" href="#list-age" role="tab" aria-controls="age"><b>Age</b></a>
@@ -65,7 +65,7 @@
                     data-bs-toggle="list" href="#list-bedused" role="tab" aria-controls="bedused"><b>Beds Used</b></a>
             </div>
         </div>
-        <div class="col-10 align-self-center text-center">
+        <div class="col-md-10 align-self-center text-center">
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-age" role="tabpanel" aria-labelledby="list-age-list">
                     <canvas id="myChart" width="40px" height="40px"></canvas>
@@ -76,8 +76,8 @@
 
                         width = screen.width;
                         if (width < 600) {
-                            ctx.canvas.parentNode.style.width = "200px";
-                            ctx.canvas.parentNode.style.height = "200px";
+                            ctx.canvas.parentNode.style.width = "300px";
+                            ctx.canvas.parentNode.style.height = "300px";
                         }
                         var myChart = new Chart(ctx, {
                             type: 'pie',
