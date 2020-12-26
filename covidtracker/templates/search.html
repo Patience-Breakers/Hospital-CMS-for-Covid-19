@@ -12,7 +12,7 @@
         {% for patient in all_search_patients_acc_to_name %}
         <li class="list-group-item">
             <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;color:rgb(0, 91, 128);">
-                <h4>{{patient.name}}</h4>
+                <h4>{{forloop.counter}}. {{patient.name}}</h4>
             </a>
         </li>
         {% endfor %}
