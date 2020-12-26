@@ -9,22 +9,44 @@ import collections
 def index(request):
     return render(request, 'index.html')
 
+# todo ----------part of dashboard starts here----------------------------------
 
-def dashboard(request):
-    all_patients = Patient.objects.all()
+
+def age_list_calc_for_dashboard_pie(all_patients):
     all_age = []
     for patient in all_patients:
         all_age.append(patient.age)
     tally_age = collections.Counter()
     for i in all_age:
         tally_age[i] = tally_age[i]+1
+    return tally_age
+
+
+def temp_list_calc_for_dashboard_pie(all_patients):
+    all_temp = []
+    for patient in all_patients:
+        all_temp.append(patient.temperature)
+    tally_temperature = collections.Counter()
+    for i in all_temp:
+        tally_temperature[i] = tally_temperature[i]+1
+    return tally_temperature
+
+
+def dashboard(request):
+    all_patients = Patient.objects.all()
+    tally_age = age_list_calc_for_dashboard_pie(all_patients)
+    tally_temperature = temp_list_calc_for_dashboard_pie(all_patients)
 
     list_keys_age = list(tally_age)
     list_values_age = list(tally_age.values())
 
+    list_keys_temp = list(tally_temperature)
+    list_values_temp = list(tally_temperature.values())
+
     context = {'all_patients': all_patients,
-               'list_keys_age': list_keys_age, 'list_values_age': list_values_age}
+               'list_keys_age': list_keys_age, 'list_values_age': list_values_age, 'list_keys_temp': list_keys_temp, 'list_values_temp': list_values_temp}
     return render(request, 'dashboard.html', context)
+# todo ----------part of dashboard ends here----------------------------------
 
 
 def search(request):
