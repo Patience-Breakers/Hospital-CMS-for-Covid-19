@@ -16,11 +16,11 @@ def dashboard(request):
 
 def search(request):
     if request.method == 'POST':
-        name = request.POST.get('name', '')
+        query = request.POST.get('name', '')
         all_search_patients_acc_to_name = Patient.objects.filter(
-            name__icontains=name)
+            name__icontains=query)
         context = {
-            'all_search_patients_acc_to_name': all_search_patients_acc_to_name}
+            'all_search_patients_acc_to_name': all_search_patients_acc_to_name, 'query': query}
         return render(request, 'search.html', context)
 
     return render(request, 'search.html')

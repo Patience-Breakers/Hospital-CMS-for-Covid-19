@@ -7,6 +7,7 @@
 {% block body %}
 <div class="container">
     <h1 class="text-center my-1">Search Result</h1>
+    <h5 class="text-center my-1">for '{{query}}'</h5>
     <ul class="list-group">
         {% for patient in all_search_patients_acc_to_name %}
         <li class="list-group-item">
