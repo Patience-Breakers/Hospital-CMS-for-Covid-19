@@ -5,11 +5,19 @@
 
 
 {% block body %}
-{% for patient in all_search_patients_acc_to_name %}
+<div class="container">
+    <h1 class="text-center my-1">Search Result</h1>
+    <ul class="list-group">
+        {% for patient in all_search_patients_acc_to_name %}
+        <li class="list-group-item">
+            <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;color:rgb(0, 91, 128);">
+                <h4>{{patient.name}}</h4>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
-<a href="/patients/{{patient.patient_id}}">{{patient.name}}</a>
-
-{% endfor %}
 {% endblock %}
 
 {% block JS %}
