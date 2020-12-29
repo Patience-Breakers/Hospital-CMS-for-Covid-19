@@ -73,3 +73,7 @@ def bedavailability(request):
 def patients(request, myid):
     patient = Patient.objects.filter(patient_id=myid)
     return render(request, 'patient.html', {'patient': patient[0]})
+
+
+def allpatients(request):
+    return render(request, 'allpatients.html')
