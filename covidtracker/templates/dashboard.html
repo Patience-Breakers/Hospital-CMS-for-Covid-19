@@ -4,7 +4,6 @@
 {% block title %}Dashboard of the Covid Tracker{% endblock %}
 {% block cssLinks %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 {% endblock %}
@@ -13,40 +12,38 @@
 {% block body %}
 <!--todo graph for active, recovered, decreased and on ventilator Starts here -->
 <div class="container my-3">
-    <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['treemap']
-        });
-        google.charts.setOnLoadCallback(drawChart);
+    <div class="parent-row-block">
+        <div class="child-block recovered">
+            <div class="top-header-child">
+                <h1 class="text-center">Recovered - 50%</h1>
+            </div>
+            <div class="bottom-img-recovered">
 
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
-                ['Patients', null, 0, 0],
-                ['Recovered', 'Patients', 200, 1],
-                ['Admitted', 'Patients', 100, 0],
-                ['Ventilator', 'Patients', 50, -0.5],
-                ['Decreased', 'Patients', 20, -1],
+            </div>
+        </div>
+        <div class="child-block admitted">
+            <div class="top-header-child-admitted">
+                <h1 class="text-center">Admitted</h1>
+            </div>
+            <div class="bottom-img-admitted">
+                <div class="parent-row-block">
+                    <div class="child-block non-ventilator">
+                        nv </div>
+                    <div class="child-block ventilator">
+                        v
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="child-block decreased">
+            <div class="top-header-child">
+                <h1 class="text-center">Decreased</h1>
+            </div>
+            <div class="bottom-img-decreased">
 
-
-
-            ]);
-
-            tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
-
-            tree.draw(data, {
-                minColor: '#dc3545',
-                midColor: '#ffc107',
-                maxColor: '#28a745',
-                headerHeight: 15,
-                fontSize: 22,
-                fontColor: 'black',
-                showScale: false
-            });
-        }
-
-    </script>
-    <div id="chart_div" style="width: 100%; height: 120px;"></div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--todo graph for active, recovered, decreased and on ventilator Ends here -->
 <!--todo PieCharts & Bar Graph Starts Here -->
