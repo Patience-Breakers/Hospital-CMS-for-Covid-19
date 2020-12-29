@@ -67,7 +67,7 @@ class Patient (models.Model):
     oxygen_level = models.IntegerField(default=90)
     temperature = models.IntegerField(default=97)
 
-    doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
     covid_test_result = models.ForeignKey(
         Result, on_delete=models.CASCADE, default="")
     room_no_and_bed_no = models.ForeignKey(
