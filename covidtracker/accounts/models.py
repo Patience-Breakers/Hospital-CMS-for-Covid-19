@@ -60,7 +60,7 @@ class Patient (models.Model):
     phone = models.CharField(max_length=13)
     address = models.TextField(max_length=1000)
     email_id = models.EmailField(max_length=254)
-    date = models.DateField(auto_now=False, auto_now_add=False)
+    date_admitted = models.DateField(auto_now=False, auto_now_add=False)
     # Hospital
     # room_no = models.IntegerField(default=0)
     # floor_no = models.IntegerField(default=0)
