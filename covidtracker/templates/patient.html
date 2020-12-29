@@ -14,16 +14,35 @@
     <br><br>
     <div class="jumbotron text-center">
         <div class="container">
+            <!--todo Name Starts here -->
             <div class="row">
-                <div class="col-3 "><img width="100"
-                        src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605983088/css/NAME_zfmbfa.png" alt="">
+                <div class="col-3 "><img width="100" src="{% static 'svg/patient/1.svg' %}" alt="">
                 </div>
                 <div class="col-9">
-                    <h1 class="display-5">{{patient.name}}-{{patient.age}}</h1>
+                    <h1 class="heading">{{patient.name}}</h1>
+                </div>
+            </div>
+            <!--todo Name Ends here -->
+            <!--* Age Starts here-->
+            <div class="row">
+                <div class="col-3 "><img width="100" src="{% static 'svg/patient/2.svg' %}" alt="">
+                </div>
+                <div class="col-9">
+                    <h1 class="display-5">{{patient.age}}</h1>
                 </div>
 
             </div>
+            <!--* Age Ends here-->
+            <!--? Gender Starts here-->
+            <div class="row">
+                <div class="col-3 "><img width="100" src="{% static 'svg/patient/3.svg' %}" alt="">
+                </div>
+                <div class="col-9">
+                    <h1 class="display-5">{{patient.gender}}</h1>
+                </div>
 
+            </div>
+            <!--? Gender Ends here-->
             <div class="row">
                 <div class="col-3 "><img width="100"
                         src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605983290/css/NAME_2_za9jwo.png"
@@ -48,8 +67,8 @@
                 <div class="col-3 "><i style="padding-right: 3%;" class="fa fa-5x fa-bed" aria-hidden="true"></i>
                 </div>
                 <div class="col-9">
-                    <h3 class="display-6">Floor No : {{patient.floor_no}}</h3>
-                    <h3 class="display-6">Room No : {{patient.room_no}}</h3>
+                    <h3 class="display-6">Floor No : {{patient.room_no_and_bed_no.floor_no}}</h3>
+                    <h3 class="display-6">Room No : {{patient.room_no_and_bed_no.room_no}}</h3>
 
 
                 </div>
@@ -70,7 +89,7 @@
                         src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605984026/css/project_xrp1tm.svg">
                 </div>
                 <div class=" col-9">
-                    <h3 class="display-6">Doctor Id- {{patient.doctorId}}</h3>
+                    <h3 class="display-6">{{patient.doctor.name}}</h3>
 
                 </div>
 
@@ -81,26 +100,7 @@
                 </div>
                 <div class=" col-9">
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-4">
-                                <h4>3rd last</h4>
-                                <h4>Negative ✅</h4>
-
-                            </div>
-                            <div class="col-4">
-                                <h4>2nd last</h4>
-                                <h4>Negative ✅</h4>
-
-                            </div>
-
-                            <div class="col-4">
-                                <h4>Latest</h4>
-                                <h4>Positive ❌</h4>
-                            </div>
-
-                        </div>
-                    </div>
+                    <div class="container"> </div>
 
                 </div>
 

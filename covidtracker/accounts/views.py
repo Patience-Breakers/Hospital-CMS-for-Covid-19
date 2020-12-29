@@ -7,7 +7,7 @@ import collections
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'mainPage/index.html')
 
 # todo ----------part of dashboard starts here----------------------------------
 
