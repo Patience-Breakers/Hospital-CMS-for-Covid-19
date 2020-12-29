@@ -7,7 +7,27 @@
 {% endblock %}
 
 {% block body %}
+<div class="container">
+    <h1 class="text-center heading ">All Patients</h1>
+    <div class="container text-center my-2">
+        <a href="/addpatient">
+            <button class="commonbuttons text-center">Add Patient</button>
+        </a>
+    </div>
+    <ul class="list-group">
 
+        {% for patient in all_patients_query_set %}
+
+        <li class="list-group-item list-group-item-action">
+            <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;color:rgb(0, 91, 128);">
+                <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
+            </a>
+        </li>
+        {% empty %}
+        <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}
 

@@ -1,8 +1,9 @@
 # Create your views here.
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import Patient, Room
+from .forms import PatientForm
 import collections
 
 
@@ -76,4 +77,24 @@ def patients(request, myid):
 
 
 def allpatients(request):
-    return render(request, 'allpatients.html')
+    all_patients_query_set = Patient.objects.all()
+    context = {'all_patients_query_set': all_patients_query_set}
+    return render(request, 'allpatients.html', context)
+
+
+def addpatient(request):
+    if request.method == 'POST':
+
+        form = PatientForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new U:RL
+            form.save()
+            return HttpResponseRedirect('/allpatients')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = PatientForm()
+        return render(request, 'add_patient.html', {'form': form})
