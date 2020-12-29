@@ -7,7 +7,7 @@ class Doctor (models.Model):
 
     doctor_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=500, default="")
-    phone = models.IntegerField(default=0)
+    phone = models.CharField(default="", max_length=500)
     # date_of_joining=models.DateField(auto_now=False, auto_now_add=False)
     experience_in_years = models.IntegerField(default=0)
     occupied = models.BooleanField(default=False)
@@ -54,17 +54,17 @@ class Room (models.Model):
 
 class Patient (models.Model):
     patient_id = models.AutoField(primary_key=True)
-    name = models.TextField(max_length=100)
+    name = models.CharField(max_length=100)
     age = models.IntegerField()
     gender = models.CharField(max_length=10)  # M of F
-    phone = models.TextField(max_length=100)
+    phone = models.CharField(max_length=13)
     address = models.TextField(max_length=1000)
     email_id = models.EmailField(max_length=254)
     date = models.DateField(auto_now=False, auto_now_add=False)
     # Hospital
     # room_no = models.IntegerField(default=0)
     # floor_no = models.IntegerField(default=0)
-    o2_level = models.IntegerField(default=0)
+    oxygen_level = models.IntegerField(default=90)
     temperature = models.IntegerField(default=97)
 
     doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
