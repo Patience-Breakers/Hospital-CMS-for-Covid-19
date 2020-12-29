@@ -43,12 +43,12 @@ class Result (models.Model):
 
 class Room (models.Model):
     floor_no = models.IntegerField(default=0)
-    room_no = models.IntegerField(default=0)
+    room_no = models.CharField(default="", max_length=500)
     ventilator = models.BooleanField(default=False)
     occupied = models.BooleanField(default=False)
     # patient_id = models.IntegerField(default=0)
 
-    def __int__(self):
+    def __str__(self):
         return self.room_no
 
 
@@ -68,7 +68,7 @@ class Patient (models.Model):
     temperature = models.IntegerField(default=97)
 
     doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
-    health_status = models.ForeignKey(
+    covid_test_result = models.ForeignKey(
         Result, on_delete=models.CASCADE, default="")
     room_no_and_bed_no = models.ForeignKey(
         Room, on_delete=models.CASCADE, default="")
