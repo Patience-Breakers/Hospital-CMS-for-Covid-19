@@ -61,13 +61,13 @@ def search(request):
     return render(request, 'result_of_search.html')
 
 
-def bedavailibility(request):
+def bedavailability(request):
     all_rooms_objects = Room.objects.all()
     max_rooms_on_floor = 6
 
     context = {'list': list, 'all_rooms_objects': all_rooms_objects,
                'max_rooms_on_floor': max_rooms_on_floor}
-    return render(request, 'bedavailibility.html', context)
+    return render(request, 'bedavailability.html', context)
 
 
 def patients(request, myid):
