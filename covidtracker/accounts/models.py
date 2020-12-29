@@ -3,23 +3,23 @@ from django.db import models
 # Create your models here.
 
 
-
 class Doctor (models.Model):
 
     doctor_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=500, default="")
     phone = models.IntegerField(default=0)
     # date_of_joining=models.DateField(auto_now=False, auto_now_add=False)
-    experience = models.IntegerField(default=0)
-    occupied=models.BooleanField(default=False)
+    experience_in_years = models.IntegerField(default=0)
+    occupied = models.BooleanField(default=False)
     # in years
-    no_of_patients = models.IntegerField(default=0)
-    no_of_recovered_patients = models.IntegerField(default=0)
-    no_of_decreased_patients = models.IntegerField(default=0)
-    no_of_patients_on_ventilator = models.IntegerField(default=0)
+    # no_of_patients = models.IntegerField(default=0)
+    # no_of_recovered_patients = models.IntegerField(default=0)
+    # no_of_decreased_patients = models.IntegerField(default=0)
+    # no_of_patients_on_ventilator = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
+
 
 class Result (models.Model):
     # patient_id = models.IntegerField(default=0)
@@ -33,13 +33,13 @@ class Result (models.Model):
     # covid_test_result_2 = models.BooleanField(default=True)
     # covid_test_result_1 = models.BooleanField(default=True)
     Covid_test = models.CharField(default="", max_length=500)
-    
 
     # def __str__(self):
     #     return self.patient_name+" "+patient_id
 
     def __str__(self):
         return self.Covid_test
+
 
 class Room (models.Model):
     floor_no = models.IntegerField(default=0)
@@ -54,10 +54,10 @@ class Room (models.Model):
 
 class Patient (models.Model):
     patient_id = models.AutoField(primary_key=True)
-    name = models.TextField(max_length=1000)
+    name = models.TextField(max_length=100)
     age = models.IntegerField()
     gender = models.CharField(max_length=10)  # M of F
-    phone = models.TextField(max_length=1000)
+    phone = models.TextField(max_length=100)
     address = models.TextField(max_length=1000)
     email_id = models.EmailField(max_length=254)
     date = models.DateField(auto_now=False, auto_now_add=False)
@@ -67,14 +67,11 @@ class Patient (models.Model):
     o2_level = models.IntegerField(default=0)
     temperature = models.IntegerField(default=97)
 
-    doctor_id= models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
+    doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
     health_status = models.ForeignKey(
         Result, on_delete=models.CASCADE, default="")
-    room_no_and_bed_no=models.ForeignKey(Room, on_delete=models.CASCADE, default="")
+    room_no_and_bed_no = models.ForeignKey(
+        Room, on_delete=models.CASCADE, default="")
+
     def __str__(self):
         return self.name
-
-
-
-
-
