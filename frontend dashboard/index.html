@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--todo CSS sytlesheets links-->
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="https://res.cloudinary.com/dnv3ztqf1/raw/upload/v1605867164/css/css/hdft_rlcdvq.css" />
+    <!--todo Facebook and Twitter integration -->
+    <link rel="stylesheet" href="https://res.cloudinary.com/dnv3ztqf1/raw/upload/v1605867164/css/css/hdft_u0v8ky.css">
+    <!--todo fonts links-->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300&display=swap" rel="stylesheet">
+    <!--todo Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--todo pass the % calculated from python and in html pass the numeric value-->
+    <style>
+        .parent-row {
+            display: flex;
+        }
+
+        /* Responsive layout - makes a one column layout instead of a three-column layout */
+        @media (max-width: 800px) {
+            .parent-row {
+                flex-direction: column;
+            }
+        }
+
+        .child {
+            display: block;
+            font-size: 25px;
+            padding: 30px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .recovered {
+            background-color: #28a745;
+            background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876829/css/dashboard/undraw_celebration_0jvk_ljsmrt.svg");
+            background-size: 300px 300px;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex: 80%;
+        }
+
+        .admitted {
+            background-color: #ffc107;
+            background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876828/css/dashboard/undraw_feeling_blue_4b7q_sh9euk.svg");
+            background-size: 300px 300px;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex: 10%;
+        }
+
+        .decreased {
+            background-color: #dc3545;
+            background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876828/css/dashboard/feature_cardiacoutput_j8tejl.png");
+            background-size: 600px 600px;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            flex: 10%;
+        }
+    </style>
+    <div class="container my-5">
+
+        <div class="parent-row text-center">
+            <div class="child recovered">
+                <h1>Recovered</h1>
+                <h1>50%</h1>
+            </div>
+            <div class="child admitted">
+                <h1>Admitted</h1>
+                <h1>40%</h1>
+            </div>
+
+            <div class="child decreased">
+                <h1>Decreased</h1>
+                <h1>10%</h1>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

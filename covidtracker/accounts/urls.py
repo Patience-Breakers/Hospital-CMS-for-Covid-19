@@ -4,12 +4,13 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="home"),
-    # path("login", views.login, name='login'),
     path("dashboard/", views.dashboard, name='dashboard'),
-    # path("addPatient", views.buttons, name='buttons'),
     path("search", views.search, name='search'),
-    path("bedavailibility22", views.bedavailibility22, name='bedavailibility22'),
-
+    path("bedavailibility/", views.bedavailibility, name='bedavailibility'),
+    path('patients/<int:myid>/', views.patients, name='patientspages'),
+    # path("login", views.login, name='login'),
+    # path("addPatient", views.buttons, name='buttons'),
+    # path("bedavailibility22", views.bedavailibility22, name='bedavailibility22'),
     # path("viewPatient", views.viewPatient, name='viewPatient'),
     # path("editPatient", views.editInfo, name='editPatient'),
     # path("searchRecovered", views.searchRecovered, name='searchRecovered'),

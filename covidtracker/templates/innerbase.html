@@ -44,10 +44,10 @@
     <!--todo navbar starts here-->
     <nav class="navbar navbar-expand-lg sticky-top ">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <section id="leftlogo"><img
-                        src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605866344/Images%20for%20UNSCRIPT%20ROOKIE/logos/navbarlogo_kn59xi.png"
-                        class="d-inline-block align-top" loading="lazy">
+            <a class="navbar-brand" href="#">
+                <section id="leftlogo">
+                    <img src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1608906379/Images%20for%20UNSCRIPT%20ROOKIE/logos/navbarlogo_kn59xi.png"
+                        width="100%" class="d-inline-block align-top" loading="lazy" />
                 </section>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -67,12 +67,12 @@
                         <a href="/dashboard" class="nav-link left">Dashboard</a>
                     </li>
                     <li>
-                        <form class="form-inline" action="search" method="POST">
+                        <form class="form-inline" action="/search" method="POST">
                             {% csrf_token %}
-                            <input class="form-control mr-sm-2" name="nameofpatient" type="search"
-                                placeholder="Search Patient" aria-label="Search" />
+                            <input class="form-control mr-sm-2" name="name" type="search" placeholder="Search Patient"
+                                aria-label="Search" />
                             <input class="btn btn-danger my-2 my-sm-0" type="submit">
-                            <a style="text-decoration: none" href="/search"></a>
+
                             </input>
                         </form>
                     </li>

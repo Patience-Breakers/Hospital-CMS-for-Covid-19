@@ -8,3 +8,83 @@
 .list-group-mine .list-group-item:hover {
   background-color: red;
 }
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.parent-row-block {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Responsive layout - makes a one column layout instead of a three-column layout */
+@media (max-width: 800px) {
+  .parent-row-block {
+    flex-direction: column;
+  }
+}
+
+.child-block {
+  display: block;
+  font-size: 25px;
+  color: white;
+  font-weight: 700;
+}
+
+.bottom-img-recovered {
+  background-color: #28a745;
+  padding: 80px;
+  background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876829/css/dashboard/undraw_celebration_0jvk_ljsmrt.svg");
+  background-size: 250px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.recovered {
+  background-color: #006117;
+  flex: 50%;
+}
+
+.admitted {
+  background-color: #ffc107;
+  color: black;
+  flex: 40%;
+}
+
+/*now between the admitted we have division, so we can divide the percentage of admitted among ventilator and non ventilato*/
+
+.ventilator {
+  background-color: #fae08c;
+  flex: 10%;
+  color: black;
+  background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876828/css/dashboard/ventilation_kethso.svg");
+  padding: 61.5px;
+  background-size: 250px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.non-ventilator {
+  flex: 90%;
+  background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876828/css/dashboard/undraw_feeling_blue_4b7q_sh9euk.svg");
+  padding: 61.5px;
+  background-size: 250px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/**/
+.decreased {
+  background-color: #8a0029;
+  flex: 10%;
+}
+
+.bottom-img-decreased {
+  background-color: #dc3545;
+  padding: 80px;
+  background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1609085644/heart_decreased_uqz7me.svg");
+  background-size: 250px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Dashboard 2</title>
+    <link rel="stylesheet" href="https://res.cloudinary.com/dnv3ztqf1/raw/upload/v1605867164/css/css/hdft_rlcdvq.css" />
+    <!--todo Facebook and Twitter integration -->
+    <link rel="stylesheet" href="https://res.cloudinary.com/dnv3ztqf1/raw/upload/v1605867164/css/css/hdft_u0v8ky.css">
+    <!--todo fonts links-->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300&display=swap" rel="stylesheet">
+    <!--todo Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .parent-row-block {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        /* Responsive layout - makes a one column layout instead of a three-column layout */
+        @media (max-width: 800px) {
+            .parent-row-block {
+                flex-direction: column;
+            }
+        }
+
+        .child-block {
+            display: block;
+            font-size: 25px;
+            color: white;
+            background-color: #a30000;
+            font-weight: 700;
+        }
+
+        .bottom-img-recovered {
+            background-color: #28a745;
+            padding: 80px;
+            background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876829/css/dashboard/undraw_celebration_0jvk_ljsmrt.svg");
+            background-size: 250px 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .recovered {
+            background-color: #006117;
+            flex: 50%;
+        }
+
+        .admitted {
+            background-color: #ffc107;
+            color: black;
+            flex: 40%;
+        }
+
+        /*now between the admitted we have division, so we can divide the percentage of admitted among ventilator and non ventilato*/
+
+        .ventilator {
+            background-color: #473600;
+            flex: 10%;
+        }
+
+        .non-ventilator {
+            flex: 90%;
+        }
+
+        /**/
+        .decreased {
+            background-color: #8a0029;
+            flex: 10%;
+        }
+
+        .bottom-bottom-img-admitted {
+            background-color: #dc3545;
+            padding: 80px;
+            background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1609085644/heart_decreased_uqz7me.svg");
+            background-size: 250px 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bottom-img-decreased {
+            background-color: #dc3545;
+            padding: 80px;
+            background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1609085644/heart_decreased_uqz7me.svg");
+            background-size: 250px 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+
+
+
+        }
+    </style>
+    <div class="container my-3">
+        <div class="parent-row-block">
+            <div class="child-block recovered">
+                <div class="top-header-child">
+                    <h1 class="text-center">Recovered - 50%</h1>
+
+                </div>
+                <div class="bottom-img-recovered">
+
+                </div>
+            </div>
+            <div class="child-block admitted">
+                <div class="top-header-child">
+                    <h1 class="text-center">Admitted</h1>
+                </div>
+                <div class="bottom-img-admitted">
+                    <div class="parent-row-block">
+                        <div class="child-block non-ventilator">
+                            nv </div>
+                        <div class="child-block ventilator">
+                            v
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="child-block decreased">
+                <div class="top-header-child">
+                    <h1 class="text-center">Decreased</h1>
+                </div>
+                <div class="bottom-img-decreased">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

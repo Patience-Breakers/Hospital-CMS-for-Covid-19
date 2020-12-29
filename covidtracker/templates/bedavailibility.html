@@ -16,25 +16,21 @@
 
     <div class="border-outside">
         <div class="inner-container p-6">
-
-
-            {% for list in finallist %}
-            <h1 class="text-center my-2">Floor {{forloop.counter}}</h1>
-
             <div class="floor1 row">
-                {% for room in list %}
-                <div class="col-sm room ">
+                {% for room in all_rooms_objects %}
+                {% if forloop.counter0|divisibleby:max_rooms_on_floor %}
+            </div>
+            <h1 class="text-center my-2">Floor {{room.floor_no}}</h1>
+            <div class="floor1 row">
+                {% endif %}
+                <div class="col-sm room 
+                 {% if room.occupied %}yellow{% endif %}
+                {% if room.ventilator %}red{% endif %}                
+                ">
                     {{room.room_no}}
                 </div>
-
                 {% endfor %}
             </div>
-            {% endfor %}
-
-
-
-
-           
         </div>
     </div>
 </div>
