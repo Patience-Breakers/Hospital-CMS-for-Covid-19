@@ -9,28 +9,33 @@
 {% block body %}
 <div class="container">
     <h1 class="text-center heading">Search Result</h1>
-    <ul>
-        <li>
-            <form class="form-inline" action="/search" method="POST">
-                {% csrf_token %}
-                <input class="form-control mr-sm-2" name="name" type="search" placeholder="Search Patient"
-                    aria-label="Search" />
-                <input class="btn btn-danger my-2 my-sm-0" type="submit">
 
-                </input>
-            </form>
-        </li>
-    </ul>
 
     <h5 class="text-center my-1">for '{{query}}'</h5>
+    <div class="container my-3">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <form class="form-inline" action="/search" method="POST">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" name="name" type="search" placeholder="Search Patient"
+                        aria-label="Search" />
+                    <input class="btn btn-danger my-2 my-sm-0" type="submit">
+
+                    </input>
+                </form>
+            </li>
+        </ul>
+    </div>
     <ul class="list-group">
         {% for patient in all_search_patients_acc_to_name %}
+        <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
 
-        <li class="list-group-item list-group-item-action">
-            <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;color:rgb(0, 91, 128);">
+            <li
+                class="list-group-item  {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
                 <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
-            </a>
-        </li>
+
+            </li>
+        </a>
         {% empty %}
         <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
         {% endfor %}
