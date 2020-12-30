@@ -12,82 +12,9 @@
     <form action="/addpatient" method="post" class="form-group">
         <input type="hidden" name="csrfmiddlewaretoken"
             value="EjqBq2WifQcrtuqapVZzbYknWfQifK0v3jmo8CmbSPPZhFX1fnYWzUEwsna6DMix">
-        <tr>
-            <th><label for="id_name">Name:</label></th>
-            <td><input type="text" name="name" maxlength="100" required id="id_name"></td>
-        </tr>
-        <tr>
-            <th><label for="id_age">Age:</label></th>
-            <td><input type="number" name="age" required id="id_age"></td>
-        </tr>
-        <tr>
-            <th><label for="id_gender">Gender:</label></th>
-            <td><input type="text" name="gender" maxlength="10" required id="id_gender"></td>
-        </tr>
-        <tr>
-            <th><label for="id_phone">Phone:</label></th>
-            <td><input type="text" name="phone" maxlength="13" required id="id_phone"></td>
-        </tr>
-        <tr>
-            <th><label for="id_address">Address:</label></th>
-            <td><textarea name="address" cols="40" rows="10" maxlength="1000" required id="id_address">
-    </textarea></td>
-        </tr>
-        <tr>
-            <th><label for="id_email_id">Email id:</label></th>
-            <td><input type="email" name="email_id" maxlength="254" required id="id_email_id"></td>
-        </tr>
-        <tr>
-            <th><label for="id_date_admitted">Date admitted:</label></th>
-            <td><input type="date" name="date_admitted" required id="id_date_admitted"></td>
-        </tr>
-        <tr>
-            <th><label for="id_oxygen_level">Oxygen level:</label></th>
-            <td><input type="number" name="oxygen_level" value="90" required id="id_oxygen_level"></td>
-        </tr>
-        <tr>
-            <th><label for="id_temperature">Temperature:</label></th>
-            <td><input type="number" name="temperature" value="97" required id="id_temperature"></td>
-        </tr>
-        <tr>
-            <th><label for="id_doctor">Doctor:</label></th>
-            <td><select name="doctor" id="id_doctor">
-                    <option value="1">Dr. Sandeep yadav</option>
-
-                    <option value="2">Dr. Aakash Yadav</option>
-
-                </select></td>
-        </tr>
-        <tr>
-            <th><label for="id_covid_test_result">Covid test result:</label></th>
-            <td><select name="covid_test_result" id="id_covid_test_result">
-                    <option value="1">Positive</option>
-
-                    <option value="2">Negative</option>
-
-                </select></td>
-        </tr>
-        <tr>
-            <th><label for="id_room_no_and_bed_no">Room no and bed no:</label></th>
-            <td><select name="room_no_and_bed_no" id="id_room_no_and_bed_no">
-                    <option value="2">101</option>
-
-                    <option value="3">102</option>
-
-                    <option value="4">103</option>
-
-                    <option value="5">104</option>
-
-                    <option value="6">105</option>
-
-                    <option value="7">106</option>
-
-                    <option value="8">201</option>
-
-                    <option value="11">202</option>
-
-                </select></td>
-        </tr>
+        <ul>
+            {{ form.as_ul }}
+        </ul>
         <input type="submit">
     </form>
 </div>
