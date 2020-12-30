@@ -57,29 +57,20 @@
             <!--contents---->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-
+                    <li class="link-background">
+                        <a href="/dashboard" class="nav-link left">Dashboard</a>
+                    </li>
                     <li class="link-background">
                         <a href="/bedavailability" class="nav-link left">Bed Availability</a>
                     </li>
                     <li class="link-background">
                         <a href="/doctoravailability" class="nav-link left">Doctor Availability</a>
                     </li>
-                    <li class="link-background">
-                        <a href="/dashboard" class="nav-link left">Dashboard</a>
-                    </li>
+
                     <li class="link-background">
                         <a href="/allpatients" class="nav-link left">All Patients</a>
                     </li>
-                    <li>
-                        <form class="form-inline" action="/search" method="POST">
-                            {% csrf_token %}
-                            <input class="form-control mr-sm-2" name="name" type="search" placeholder="Search Patient"
-                                aria-label="Search" />
-                            <input class="btn btn-danger my-2 my-sm-0" type="submit">
 
-                            </input>
-                        </form>
-                    </li>
                 </ul>
             </div>
             <!------>
