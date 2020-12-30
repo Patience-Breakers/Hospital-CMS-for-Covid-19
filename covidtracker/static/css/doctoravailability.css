@@ -1,0 +1,7 @@
+.not-occupied li {
+  background-color: rgb(126, 236, 172);
+  color: red;
+}
+.occupied li {
+  background-color: rgb(255, 204, 204);
+}

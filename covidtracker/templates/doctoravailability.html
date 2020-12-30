@@ -1,14 +1,14 @@
 {% extends 'innerbase.html' %}
 {% load static %}
 
-{% block title %}All Patients | The ASA Covid Tracker{% endblock %}
+{% block title %}All Doctors | The ASA Covid Tracker{% endblock %}
 {% block cssLinks %}
-<link rel="stylesheet" href="{% static 'css/allpatients.css' %}">
+<link rel="stylesheet" href="{% static 'css/doctoravailability.css' %}">
 {% endblock %}
 
 {% block body %}
 <div class="container">
-    <h1 class="text-center heading ">All Doctors</h1>
+    <h1 class="text-center heading my-2">All Doctors</h1>
     <div class="container text-center my-2">
         <a href="/adddoctor">
             <button class="commonbuttons text-center">Add Doctor</button>
@@ -18,12 +18,15 @@
 
         {% for doctor in all_doctors %}
 
-        <li class="list-group-item list-group-item-action">
-            <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;color:rgb(0, 91, 128);">
-                <h4>Unique Id-{{doctor.pk}}. || {{doctor.name}} || Experience : {{doctor.experience_in_years}} Years
+        <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+            <li class="list-group-item list-group-item-action 
+        {% if doctor.occupied %} list-group-item-danger {% else %} list-group-item-success {% endif %}
+        ">
+
+                <h4> Unique Id-{{doctor.pk}}. || {{doctor.name}} || Experience : {{doctor.experience_in_years}} Years
                 </h4>
-            </a>
-        </li>
+            </li>
+        </a>
         {% empty %}
         <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
         {% endfor %}

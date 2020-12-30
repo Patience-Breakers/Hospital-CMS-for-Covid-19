@@ -123,7 +123,16 @@ def addpatient(request):
                 room.ventilator = True
             room.save()
 
-            return HttpResponseRedirect('/allpatients')
+            # todo docotor avialable changed
+            doctor_no = request.POST.get('doctor')
+            doctor = Room.objects.get(pk=doctor_no)
+            doctor.occupied = True
+            print(doctor)
+            print(doctor_no)
+            print(doctor.occupied)
+            doctor.save()
+
+            return HttpResponseRedirect('/allpatients/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
