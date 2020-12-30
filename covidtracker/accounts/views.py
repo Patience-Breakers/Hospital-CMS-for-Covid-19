@@ -117,6 +117,8 @@ def addpatient(request):
             form.save()
             room_no = request.POST.get('room_no_and_bed_no')
             ventilator = request.POST.get('ventilator')
+            doctor_no = request.POST.get('doctor')
+
             room = Room.objects.get(pk=room_no)
             room.occupied = True
             if ventilator == 'yes':
@@ -124,12 +126,9 @@ def addpatient(request):
             room.save()
 
             # todo docotor avialable changed
-            doctor_no = request.POST.get('doctor')
-            doctor = Room.objects.get(pk=doctor_no)
+            # doctor = Room.objects.get(pk=3)
+            doctor = Doctor.objects.get(pk=doctor_no)
             doctor.occupied = True
-            print(doctor)
-            print(doctor_no)
-            print(doctor.occupied)
             doctor.save()
 
             return HttpResponseRedirect('/allpatients/')
