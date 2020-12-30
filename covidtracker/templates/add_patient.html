@@ -10,12 +10,11 @@
 <div class="container ">
     <h1 class="text-center my-3">Add Patient</h1>
     <form action="/addpatient" method="post" class="form-group">
-        <input type="hidden" name="csrfmiddlewaretoken"
-            value="EjqBq2WifQcrtuqapVZzbYknWfQifK0v3jmo8CmbSPPZhFX1fnYWzUEwsna6DMix">
-        <ul>
+        {% csrf_token %}
+        <ul class="form-group">
             {{ form.as_ul }}
         </ul>
-        <input type="submit">
+        <input class="btn-danger btn" type="submit">
     </form>
 </div>
 
