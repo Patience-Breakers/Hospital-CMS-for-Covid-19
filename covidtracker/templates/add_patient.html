@@ -13,7 +13,18 @@
         {% csrf_token %}
         <ul class="form-group">
             {{ form.as_ul }}
+
         </ul>
+        <div class="container">
+            <div class="form-check">
+                <label for="ventilator">Ventilator Required?</label>
+                <select name="ventilator" class="form-control" id="ventilator">
+                    <option value="yes">YES</option>
+                    <option value="no">NO</option>
+                </select>
+            </div>
+        </div>
+
         <input class="btn-danger btn" type="submit">
     </form>
 </div>

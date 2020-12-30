@@ -92,10 +92,13 @@ def addpatient(request):
         if form.is_valid():
             form.save()
             room_no = request.POST.get('room_no_and_bed_no')
-            print(room_no)
+            ventilator = request.POST.get('ventilator')
             room = Room.objects.get(pk=room_no)
             room.occupied = True
+            if ventilator == 'yes':
+                room.ventilator = True
             room.save()
+
             return HttpResponseRedirect('/allpatients')
 
     # if a GET (or any other method) we'll create a blank form
