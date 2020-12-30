@@ -2,8 +2,8 @@
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
-from .models import Patient, Room
-from .forms import PatientForm
+from .models import Patient, Room, Doctor
+from .forms import PatientForm, DoctorForm
 import collections
 
 
@@ -71,6 +71,12 @@ def bedavailability(request):
     return render(request, 'bedavailability.html', context)
 
 
+def doctoravailability(request):
+    all_doctor_objects = Doctor.objects.all()
+    context = {'all_doctors': all_doctor_objects}
+    return render(request, 'doctoravailability.html', context)
+
+
 def patients(request, myid):
     patient = Patient.objects.filter(patient_id=myid)
     return render(request, 'patient.html', {'patient': patient[0]})
@@ -80,6 +86,24 @@ def allpatients(request):
     all_patients_query_set = Patient.objects.all()
     context = {'all_patients_query_set': all_patients_query_set}
     return render(request, 'allpatients.html', context)
+
+
+def adddoctor(request):
+    # if we get POST method, we will use this
+    if request.method == 'POST':
+
+        form = DoctorForm(request.POST)
+
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect('/doctoravailability/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = DoctorForm()
+        return render(request, 'adddoctor.html', {'form': form})
 
 
 def addpatient(request):
