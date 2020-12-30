@@ -28,3 +28,14 @@ https://docs.djangoproject.com/en/3.1/ref/models/querysets/
           roomcreate(2)
           roomcreate(3)
           roomcreate(4)
+
+# command to make all rooms unoccupied
+
+          from accounts.models import Room
+
+          all_rooms=Room.objects.all()
+
+          for i in all_rooms:
+            i.occupied=False
+            i.ventilator=False
+            i.save()
