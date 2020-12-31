@@ -13,98 +13,177 @@
     <h1 class="text-center">Patient Data</h1>
     <br><br>
     <div class="jumbotron text-center">
-        <div class="container">
+        <div class="container align-items-center">
             <!--todo Name Starts here -->
             <div class="row">
-                <div class="col-3 "><img width="100" src="{% static 'svg/patient/1.svg' %}" alt="">
+                <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/1.svg' %}" alt="">
                 </div>
-                <div class="col-9">
+                <div class="col-md-9">
                     <h1 class="heading">{{patient.name}}</h1>
                 </div>
             </div>
             <!--todo Name Ends here -->
-            <!--* Age Starts here-->
-            <div class="row">
-                <div class="col-3 "><img width="100" src="{% static 'svg/patient/2.svg' %}" alt="">
-                </div>
-                <div class="col-9">
-                    <h1 class="display-5">{{patient.age}}</h1>
-                </div>
-
-            </div>
-            <!--* Age Ends here-->
-            <!--? Gender Starts here-->
-            <div class="row">
-                <div class="col-3 "><img width="100" src="{% static 'svg/patient/3.svg' %}" alt="">
-                </div>
-                <div class="col-9">
-                    <h1 class="display-5">{{patient.gender}}</h1>
-                </div>
-
-            </div>
-            <!--? Gender Ends here-->
-            <div class="row">
-                <div class="col-3 "><img width="100"
-                        src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605983290/css/NAME_2_za9jwo.png"
-                        alt=""></div>
-                <div class="col-9">
-                    <h1 class="display-5">{{patient.gender}}</h1>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-3 "><i style="padding-right: 3%;" class="fa fa-5x fa-phone" aria-hidden="true"></i>
-                </div>
-                <div class="col-9">
-                    <h3 class="display-6">{{patient.address}}</h3>
-                    <h3 class="display-6">{{patient.phone}}</h3>
-                    <h3 class="display-6">{{patient.email_id}}</h3>
-                </div>
-
-            </div>
 
             <div class="row">
-                <div class="col-3 "><i style="padding-right: 3%;" class="fa fa-5x fa-bed" aria-hidden="true"></i>
+                <div class="col-md">
+                    <!--?floor starts here -->
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <img width="100" src="{% static 'svg/patient/12.svg' %}" alt="">
+                        </div>
+                        <div class="col-md-9 ">
+                            <h4>Floor No : {{patient.room_no_and_bed_no.floor_no}}</h4>
+                        </div>
+                    </div>
+                    <!--? floor ends here -->
                 </div>
-                <div class="col-9">
-                    <h3 class="display-6">Floor No : {{patient.room_no_and_bed_no.floor_no}}</h3>
-                    <h3 class="display-6">Room No : {{patient.room_no_and_bed_no.room_no}}</h3>
-
-
+                <div class="col-md">
+                    <!--? room starts here -->
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <i class="fa fa-bed fa-3x"></i>
+                        </div>
+                        <div class="col-md-9 ">
+                            <h4>Room No : {{patient.room_no_and_bed_no.room_no}}</h4>
+                        </div>
+                    </div>
+                    <!--? room ends here -->
                 </div>
-
             </div>
             <div class="row">
-                <div class="col-3 "><img width="100"
-                        src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgaWQ9IkNvcm9uYV9WaXJ1c19TeW1wdG9tc19GZXZlciIgZGF0YS1uYW1lPSJDb3JvbmEgVmlydXMgU3ltcHRvbXMgRmV2ZXIiPjxnIGlkPSJGaWxsZWQiPjxwYXRoIGQ9Im00MzIgMTEyaC0yMDB2NzguNTY3bC0yNiAzMy40MzMgMjYgMTZ2MzZhMjggMjggMCAwIDAgMjggMjhoNjB2NDBzLTEwLjYgMTEuOTIzLTIzLjE2NiAzMS45OTJjNjMuNzktLjM0NCAxMzUuMTY2LTM5Ljk5MiAxMzUuMTY2LTM5Ljk5MnoiIGZpbGw9IiNmZmRmYzUiLz48cGF0aCBkPSJtNDMyIDE4OC43NzFhMjMyLjc4NyAyMzIuNzg3IDAgMCAxIC0xMTIgMTIyLjYzOXYzMi41OXMtMTAuNiAxMS45MjMtMjMuMTY2IDMxLjk5MmM2My43OS0uMzQ0IDEzNS4xNjYtMzkuOTkyIDEzNS4xNjYtMzkuOTkyeiIgZmlsbD0iI2ZmZDVjNyIvPjxwYXRoIGQ9Im0xOTIuMiAzMC41NjdzLTggMTEyIDc3LjMgMTEzLjQzM2g3NC41YzEzLjc3Ny0xLjQzMyAyNCA2LjU2NyAyNCAyMC40NTYgMCA0Mi4xMTEuMSAxMDYuMTExIDY0IDEzMC4xMTEgMTAwLjY4NC0xMjguMzI3IDgzLjY2Ni0yNTQuNzI1IDIyLjg4OS0yNTYuOTQxLTMwLjg4OS03MS4wNTktMTY5Ljg4MiA4LjAzMS0yMzEuOTE3IDguMDMxLTIzLjI2NCAwLTMwLjc3Mi0xNS4wOS0zMC43NzItMTUuMDl6IiBmaWxsPSIjNjg2NzZiIi8+PHBhdGggZD0ibTQ3OC40NTIgNDYuMTZhMjIwLjA0OSAyMjAuMDQ5IDAgMCAxIC0xMDguMjIgMTY0LjI0N2M0LjU5OCAzMy41OTMgMTguNjczIDY3Ljk3MyA2MS43NjggODQuMTYgODYtMTA5LjYwOSA4Ni4xMTctMjE3Ljc5NCA0Ni40NTItMjQ4LjQwN3oiIGZpbGw9IiM1ODU3NWIiLz48cGF0aCBkPSJtMzY4IDE4Mi41NjdjMC0zMiA0MC0zMiA0MCA4IDAgMjIuMDkyLTkuOTA5IDQwLTMyIDQwaC0zMnYtNDh6IiBmaWxsPSIjZmZkZmM1Ii8+PHBhdGggZD0ibTEzNiAyOTZ2LTIyNGExNiAxNiAwIDAgMCAtMTYtMTZoLTY0YTE2IDE2IDAgMCAwIC0xNiAxNnYyMjRhNzkuODc4IDc5Ljg3OCAwIDAgMCAtMzEuOTk1IDY0LjkxMWMuNDc3IDQyLjgzNyAzNS4yMzkgNzguMDU5IDc4LjA2NyA3OS4wNjZhODAgODAgMCAwIDAgNDkuOTI4LTE0My45Nzd6IiBmaWxsPSIjZTJkYmQ1Ii8+PHBhdGggZD0ibTguMDA1IDM2MC45MTFjLjQ3NyA0Mi44MzcgMzUuMjM5IDc4LjA1OSA3OC4wNjcgNzkuMDY2YTgwIDgwIDAgMCAwIDQ5LjkyOC0xNDMuOTc3di03My41NDdhMTc5LjQyNCAxNzkuNDI0IDAgMCAxIC05NiA0Ny4zNjZ2MjYuMTgxYTc5Ljg3OCA3OS44NzggMCAwIDAgLTMxLjk5NSA2NC45MTF6IiBmaWxsPSIjZDRjY2M3Ii8+PHBhdGggZD0ibTI5Ni44MzQgMzc1Ljk5MmMtMTguMzIxIDI5LjI1My00MC44MzQgNzUuODE2LTQwLjgzNCAxMjguMDA4djhoMjMydi04YzAtNTYtOC0xMDQtNTYtMTY4IDAgMC03MS4zNzYgMzkuNjQ4LTEzNS4xNjYgMzkuOTkyeiIgZmlsbD0iIzk2ZTBkNyIvPjxwYXRoIGQ9Im0zMjggMTY4YTI0IDI0IDAgMCAxIC00OCAwYzAtMTMuMjU1IDI0LTU2IDI0LTU2czI0IDQyLjc0NSAyNCA1NnoiIGZpbGw9IiNhZmVmZGUiLz48cGF0aCBkPSJtMTA0IDMxNC43NTJ2LTEzMC43NTJoLTMydjEzMC43NTJhNDggNDggMCAxIDAgMzIgMHoiIGZpbGw9IiNmMjdjNmQiLz48cGF0aCBkPSJtNDYxLjM1NSAzODIuMDY0YTIwOC4yMTEgMjA4LjIxMSAwIDAgMSAtMjA0LjUzOCAxMDQuN2MtLjUyMyA1LjY2OC0uODE3IDExLjQxNS0uODE3IDE3LjIzNnY4aDIzMnYtOGMwLTQxLjc3Ni00LjQ1Ny03OS4xLTI2LjY0NS0xMjEuOTM2eiIgZmlsbD0iIzk3ZDBkZCIvPjxwYXRoIGQ9Im0zOTIgMzkyYTQ4IDQ4IDAgMCAwIC00OCA0OHY3Mmg5NnYtNzJhNDggNDggMCAwIDAgLTQ4LTQ4eiIgZmlsbD0iI2FmZWZkZSIvPjxwYXRoIGQ9Im0xMjcuNjkzIDMzMy4wNTdhMTA3Ljk0NyAxMDcuOTQ3IDAgMCAxIC04MS41MjEgNTAuNDQzIDQ3Ljk3OCA0Ny45NzggMCAxIDAgODEuNTIxLTUwLjQ0N3oiIGZpbGw9IiNlZDY0NjQiLz48Y2lyY2xlIGN4PSI3MiIgY3k9IjM1MiIgZmlsbD0iI2ZmYTU5NiIgcj0iMTYiLz48Y2lyY2xlIGN4PSIxMDQiIGN5PSIzMjgiIGZpbGw9IiNmZmE1OTYiIHI9IjgiLz48cGF0aCBkPSJtMzIyLjMyNCAxNDguODc4YTY3Ljk2NSA2Ny45NjUgMCAwIDEgLTQxLjM1OSAyNS44NTggMjQgMjQgMCAwIDAgNDcuMDM1LTYuNzM2YzAtNC4xODgtMi40LTExLjMyMy01LjY3Ni0xOS4xMjJ6IiBmaWxsPSIjOTZlMGQ3Ii8+PGNpcmNsZSBjeD0iMzgwIiBjeT0iNTIiIGZpbGw9IiM4YThhOGMiIHI9IjI4Ii8+PGNpcmNsZSBjeD0iNDI4IiBjeT0iODQiIGZpbGw9IiM4YThhOGMiIHI9IjEyIi8+PHBhdGggZD0ibTM5OS41MjQgMTY1LjMxNmE5MS45MDcgOTEuOTA3IDAgMCAxIC0zNy42NDUgNjUuMjUxaDE0LjEyMWMyMi4wOTEgMCAzMi0xNy45MDggMzItNDAgMC0xMS44NjctMy41MjItMjAuMjE2LTguNDc2LTI1LjI1MXoiIGZpbGw9IiNmZmQ1YzciLz48ZyBmaWxsPSIjZDVmN2VkIj48Y2lyY2xlIGN4PSIzODQiIGN5PSI0MzIiIHI9IjE2Ii8+PGNpcmNsZSBjeD0iNDA4IiBjeT0iNDU2IiByPSI4Ii8+PC9nPjwvZz48ZyBpZD0iT3V0bGluZSI+PHBhdGggZD0ibTUwNS45MTggMTY1LjUyN2M5LjM1Ny0zOS43NzcgNy45NTQtNzUuODA2LTMuOTUxLTEwMS40NTMtOS4xNDUtMTkuNy0yMy44ODUtMzEuNjItNDEuODU1LTM0LjAyMy0xNy42MjYtMzMuMTQxLTU3LTMzLjI2Mi05My44ODMtMjYuNTEtMTAuNCAxLjktNy41MzUgMTcuNjUzIDIuODgxIDE1LjczOCA4MS42NzgtMTQuOTQ5IDcxLjQyNSAyNS44MzQgODUuNDkgMjYuMzQ2IDE3Ljc5Mi42NDYgMjcuNjg3IDE0LjA1MyAzMi44NTUgMjUuMTg2IDEwLjI1MiAyMi4wODYgMTEuMzA2IDU1LjI3MyAyLjg4OSA5MS4wNTItOS41OTEgNDAuNzc0LTMwLjYyNSA4My4xOS02MC45NTcgMTIzLjAwOS0xMy43ODMtNi4wNjQtMjQuNTY0LTE0LjQ5LTMyLjg0My0yNS42NDEtNi4zLTguNDkyLTE5LjE2IDEuMDMzLTEyLjg0NiA5LjUzOCAxMC4wNDcgMTMuNTMzIDIzLjU5NSAyNCA0MC4zIDMxLjE4Ni41MTcgMzYuMzI1LTEuMiAzNy4xMTIgMS42IDQwLjg0NSA4MS4zMzIgMTA4LjQ0IDM4LjU2NiAxNzEuMiA2Mi40MDIgMTcxLjJhOCA4IDAgMCAwIDgtOGMwLTU4LjYtOS40MjItMTA3LjczNS01Ni0xNzAuNjUzdi0zNi4wNGMzMi44MTYtNDIuMzggNTUuNTk0LTg3Ljg5MSA2NS45MTgtMTMxLjc4eiIvPjxwYXRoIGQ9Im0zNzYgMjIyLjU2N2MtMTAuNTc4IDAtMTAuNTkxIDE2IDAgMTYgNTIuNjcgMCA1MC44ODYtODcuMDgzIDEwLjMzLTg3LjA4My0xMy4wODQgMC0yNi4zMyAxMC42NzctMjYuMzMgMzEuMDgzIDAgMTAuNTc2IDE2IDEwLjU5MyAxNiAwIDAtMjEuOSAyNC0yMC42NiAyNCA4IDAgOS42MjItMi4zMzkgMzItMjQgMzJ6Ii8+PHBhdGggZD0ibTM5MiAzODRhNTYuMDYzIDU2LjA2MyAwIDAgMCAtNTYgNTZ2NjRjMCAxMC41NzYgMTYgMTAuNTkyIDE2IDB2LTY0YTQwIDQwIDAgMCAxIDgwIDB2NjRjMCAxMC41NzYgMTYgMTAuNTkyIDE2IDB2LTY0YTU2LjA2MyA1Ni4wNjMgMCAwIDAgLTU2LTU2eiIvPjxwYXRoIGQ9Im0zOTYuOSAzNDMuNzkzYy0yMi4yODcgOS4zOC01My42MzggMjAuMjg0LTg0LjU0NSAyMy4zNTggMjMuNi0zMy43OTQgMTIuODE1LTQuMTY2IDE1LjY0OS02My4xNTFhOCA4IDAgMCAwIC04LThoLTYwLjAwNGEyMC4wMjMgMjAuMDIzIDAgMCAxIC0yMC0yMHYtMzZjMC03LjM3Ni03LjQyNi03LjkxNC0yMi4yMDUtMTguMTM1IDIwLjAxOC0yNi42MTEgMjIuMjA1LTI2LjUgMjIuMjA1LTMxLjN2LTQzLjkzYzQuNzE4IDEuOCAxMy4yNiA0LjExNiAxNi4wMSA0LjExNiA5LjY5NSAwIDEwLjk3LTE0LjIgMS4zNjgtMTUuODgxLTM5Ljc0Ni02Ljk0OS01NC42MjQtNDYuMDY3LTU3LjA0Ni04Ni4zNDggMjQuNTc4IDEyLjc3NyA2NS42NC0xLjQgMTA3LjkzLTEzLjcgMTAuMTUxLTIuOTc4IDUuNjYzLTE4LjMyNy00LjUtMTUuMzU0LTQ2LjE3MiAxNC40NDMtOTIuNjY2IDI4LjE1My0xMDQuNDIxIDcuNDg3YTcuODQyIDcuODQyIDAgMCAwIC04LjYxMy00LjM3NyA4LjA3NyA4LjA3NyAwIDAgMCAtNi41IDcuNDI3IDE4Mi4xIDE4Mi4xIDAgMCAwIDUuNTUxIDU0LjA3NmM2LjUyMSAyNC4zOTggMTguMTQ4IDQyLjYxOSAzNC4yMjEgNTQuMDE5djQ5LjcyNmMtMzQuMzA2IDQ2LjE3LTM1LjYxNSAzMy4xNDIgMCA1Ni42NDd2MzEuNTI3YTM2LjA0IDM2LjA0IDAgMCAwIDM2IDM2aDUydjI5LjA1MmEyODMuODU1IDI4My44NTUgMCAwIDAgLTIwLjQzIDI4LjI4OCA3Ljk5NCA3Ljk5NCAwIDAgMCAtMy40OTEgNS42Yy0yMy40ODUgMzguNDk3LTQwLjA3OSA4My43ODktNDAuMDc5IDEyOS4wNiAwIDEwLjU3NiAxNiAxMC41OTIgMTYgMCAwLTQ4LjAwNiAyMC4xMzMtOTEuNTM0IDM3LjQ1MS0xMjAuMSAzNi44OTUtMS4yMDcgNzUuMzUxLTE0LjI5MSAxMDEuNjUzLTI1LjM1OSA5Ljc2MS00LjEwOSAzLjU0NC0xOC44NTItNi4yMDQtMTQuNzQ4eiIvPjxwYXRoIGQ9Im0yOTcuMDI0IDEwOC4wODNjLTQuMTc4IDcuNDQzLTI1LjAyNCA0NS4zMS0yNS4wMjQgNTkuOTE3YTMyIDMyIDAgMCAwIDY0IDBjMC0xNC42MDctMjAuODQ2LTUyLjQ3NC0yNS4wMjQtNTkuOTE3YTggOCAwIDAgMCAtMTMuOTUyIDB6bTYuOTc2IDc1LjkxN2ExNi4wMTkgMTYuMDE5IDAgMCAxIC0xNi0xNmMwLTUuNDM4IDcuNDM0LTIyLjQ4MyAxNi0zOS4xMDYgOC41NjUgMTYuNjE4IDE2IDMzLjY2MyAxNiAzOS4xMDZhMTYuMDE5IDE2LjAxOSAwIDAgMSAtMTYgMTZ6Ii8+PHBhdGggZD0ibTE0NCAyOTIuMTE2di0yMjAuMTE2YTI0LjAyNyAyNC4wMjcgMCAwIDAgLTI0LTI0aC02NGEyNC4wMjcgMjQuMDI3IDAgMCAwIC0yNCAyNHYyMjAuMTIyYy02NC4xMjcgNTMuMDIzLTI0Ljk3OCAxNTUuODc4IDU2LjAyMiAxNTUuODc4IDgyLjk2OSAwIDExOC45OTYtMTAzLjk5MSA1NS45NzgtMTU1Ljg4NHptLTU3LjczOSAxMzkuODY0Yy02Ni44NjgtMS41NzMtOTYuNjk0LTg4LjA5Mi00MS40NTYtMTI5LjU4IDYuMDY1LTQuNTU3IDIuMDM2LTQuMzg3IDMuMi0xNDIuNGgyMy45OTVjMTAuNTc4IDAgMTAuNTkxLTE2IDAtMTZoLTI0di0xNmg0MGMxMC41NzggMCAxMC41OTEtMTYgMC0xNmgtNDB2LTE2aDI0YzEwLjU3OCAwIDEwLjU5MS0xNiAwLTE2aC0yNGMuNDg1LTIuMTY0LTIuNy0xNiA4LTE2aDY0YTguMDA5IDguMDA5IDAgMCAxIDggOGMxLjIgMjMyLjUzOC0yLjg4OSAyMjUuODI1IDMuMTk1IDIzMC40IDU1LjcwNSA0MS44NCAyNS4xNjcgMTMxLjI2Mi00NC45MzQgMTI5LjU4eiIvPjxwYXRoIGQ9Im0xMTIgMzA5LjQxNnYtMTI1LjQxNmE4IDggMCAwIDAgLTgtOGgtMzJhOCA4IDAgMCAwIC04IDh2MTI1LjQxNmMtNTMuOTUgMjUuNjQ5LTM1LjE4MyAxMDYuNTg0IDI0IDEwNi41ODQgNTkuMSAwIDc4LjAxNi04MC45IDI0LTEwNi41ODR6bS0yNCA5MC41ODRjLTQ0LjY2NCAwLTU1LjYtNjIuNzE0LTEzLjMyNi03Ny43MDggMTAuMTA0LTMuNTg0IDMuMzQzLTEwLjI3OCA1LjMyNi0xMzAuMjkyaDE2YzIuMDI4IDEyMi43NzgtNC40NDcgMTI2LjgyNiA1LjMyNiAxMzAuMjkyIDQyLjI1NyAxNC45ODYgMzEuMzUzIDc3LjcwOC0xMy4zMjYgNzcuNzA4eiIvPjxwYXRoIGQ9Im04IDQ0OGMwIDEwLjU3NyAxNiAxMC41OTIgMTYgMHMtMTYtMTAuNTkyLTE2IDB6Ii8+PHBhdGggZD0ibTQwIDQ2NGMwIDEwLjU3NyAxNiAxMC41OTIgMTYgMHMtMTYtMTAuNTkyLTE2IDB6Ii8+PHBhdGggZD0ibTEyMCA0NjRjMCAxMC41NzcgMTYgMTAuNTkyIDE2IDBzLTE2LTEwLjU5Mi0xNiAweiIvPjxwYXRoIGQ9Im04MCA0NzJjMCAxMC41NzcgMTYgMTAuNTkyIDE2IDBzLTE2LTEwLjU5Mi0xNiAweiIvPjxwYXRoIGQ9Im0xNTIgNDQ4YzAgMTAuNTc3IDE2IDEwLjU5MiAxNiAwcy0xNi0xMC41OTItMTYgMHoiLz48cGF0aCBkPSJtMzQ0IDE2YzAtMTAuNTc3LTE2LTEwLjU5Mi0xNiAwczE2IDEwLjU5MiAxNiAweiIvPjwvZz48L2c+PC9zdmc+" />
+                <div class="col-md">
+                    <!--? Doctor id starts here -->
+                    <div class="row">
+                        <div class="col-md-3 text-center"><img width="100" src="{% static 'svg/patient/10.svg' %}"
+                                alt="">
+                        </div>
+                        <div class="col-md-9 ">
+                            <h4>{{patient.doctor.name}}</h4>
+                        </div>
+                    </div>
+                    <!--? doctor ends here -->
                 </div>
-                <div class="col-9">
-                    <h3 class="display-6">{{patient.temperature}}&#x2109;</h3>
-
+                <div class="col-md">
+                    <!--? result starts here -->
+                    <div class="row">
+                        <div class="col-md-3 text-center"><img width="100" src="{% static 'svg/patient/11.svg' %}"
+                                alt="">
+                        </div>
+                        <div class="col-md-9 ">
+                            <h4>COVID-19: {{patient.covid_test_result.Covid_test}}</h4>
+                        </div>
+                    </div>
+                    <!--? result ends here -->
                 </div>
+            </div>
+            <!--? ventilator boolean starts here -->
+            <div class="row">
+                <div class="col-md-3 text-center"><img width="100"
+                        src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876828/css/dashboard/ventilation_kethso.svg"
+                        alt="">
+                </div>
+                <div class="col-md-9 ">
+                    <h4>Ventilator Occupied :
 
+                        {% if patient.room_no_and_bed_no.ventilator %} Yes {% else %} No {% endif %}
+
+                    </h4>
+                </div>
+            </div>
+            <!--? ventilator boolean ends here -->
+
+            <div class="row">
+                <div class="col-md">
+                    <!--* Age Starts here-->
+                    <div class="row">
+                        <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/2.svg' %}" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <h1 class="display-5 ">{{patient.age}}</h1>
+                        </div>
+                    </div>
+                    <!--* Age Ends here-->
+                </div>
+                <div class="col-md">
+                    <!--? Gender Starts here-->
+                    <div class="row">
+                        <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/3.svg' %}" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <h1 class="display-5">{{patient.gender}}</h1>
+                        </div>
+                    </div>
+                    <!--? Gender Ends here-->
+                </div>
+                <div class="col-md">
+                    <!--todo Phone Starts here-->
+                    <div class="row">
+                        <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/4.svg' %}" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <h1 class="display-5">{{patient.phone}}</h1>
+                        </div>
+
+                    </div>
+                    <!--todo Phone Ends here-->
+                </div>
+            </div>
+            <!--todo address starts here -->
+            <div class="row">
+                <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/5.svg' %}" alt=""></div>
+                <div class="col-md-9 overflow-auto">
+                    <h4>{{patient.address}}</h4>
+                </div>
+            </div>
+            <!--todo address ends here -->
+            <div class="row">
+                <div class="col-md">
+                    <!--! Email id starts here -->
+                    <div class="row">
+                        <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/6.svg' %}" alt=""></div>
+                        <div class="col-md-9 overflow-auto">
+                            <h4>{{patient.email_id}}</h4>
+                        </div>
+                    </div>
+                    <!--! email id ends here -->
+                </div>
+                <div class="col-md">
+                    <!--* Date admitted id starts here -->
+                    <div class="row">
+                        <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/7.svg' %}" alt=""></div>
+                        <div class="col-md-9 ">
+                            <h4>Date Admitted : {{patient.date_admitted}}</h4>
+                        </div>
+                    </div>
+                    <!--* Date admitted id ends here -->
+                </div>
             </div>
             <div class="row">
-                <div class="col-3 "><img width="100"
-                        src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605984026/css/project_xrp1tm.svg">
+                <div class="col-md">
+                    <!--?oxygen level starts here -->
+                    <div class="row">
+                        <div class="col-md-3 "><img width="100" src="{% static 'svg/patient/8.svg' %}" alt=""></div>
+                        <div class="col-md-9 ">
+                            <h4>{{patient.oxygen_level}} %</h4>
+                        </div>
+                    </div>
+                    <!--? oxygen level ends here -->
                 </div>
-                <div class=" col-9">
-                    <h3 class="display-6">{{patient.doctor.name}}</h3>
-
+                <div class="col-md">
+                    <!--? temperature id starts here -->
+                    <div class="row">
+                        <div class="col-md-3 text-center"><img width="100" src="{% static 'svg/patient/9.svg' %}"
+                                alt="">
+                        </div>
+                        <div class="col-md-9 ">
+                            <h4>{{patient.temperature}} &#x2109;</h4>
+                        </div>
+                    </div>
+                    <!--? temperature ends here -->
                 </div>
-
             </div>
-            <div class="row">
-                <div class="col-3 "><img width="100" src="https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605984404/css/coronavirus_bjoxov.svg
-    ">
-                </div>
-                <div class=" col-9">
 
-                    <div class="container"> </div>
 
-                </div>
-
-            </div>
         </div>
     </div>
 </div>
