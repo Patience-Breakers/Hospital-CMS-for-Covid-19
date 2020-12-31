@@ -5,10 +5,6 @@ class ItemsTotalCount(models.Model):
     ppe_kits=models.IntegerField(default=0)
     gloves=models.IntegerField(default=0)
     cotton_in_kg=models.IntegerField(default=0)
-
-
-
-
 class Doctor (models.Model):
 
     doctor_id = models.AutoField(primary_key=True)
@@ -19,15 +15,11 @@ class Doctor (models.Model):
 
     def __str__(self):
         return self.name
-
-
 class Result (models.Model):
     Covid_test = models.CharField(default="", max_length=500)
 
     def __str__(self):
         return self.Covid_test
-
-
 class Room (models.Model):
     floor_no = models.IntegerField(default=0)
     room_no = models.CharField(default="", max_length=500)
@@ -36,8 +28,6 @@ class Room (models.Model):
 
     def __str__(self):
         return self.room_no
-
-
 class Patient (models.Model):
     patient_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
