@@ -1,0 +1,58 @@
+{% extends 'innerbase.html' %}
+{% load static %}
+
+{% block title %}{{doctor.name}} Doctor Information page of The ASA Covid Tracker{% endblock %}
+{% block cssLinks %}
+<link rel="stylesheet" href="{% static 'css/patient.css' %}">
+{% endblock %}
+
+{% block body %}
+<!--todo Bed Avability Visualizer Start here-->
+<div class="container">
+    <br><br>
+    <h1 class="text-center">Doctor Data</h1>
+    <br><br>
+    <div class="jumbotron text-center  {% if doctor.occupied %} list-group-item-danger {% endif %}">
+
+        <div class="container align-items-center ">
+            <div class="row">
+                <div class="co-md-3">
+                    <h3>Unique Id: {{doctor.doctor_id}}</h3>
+                </div>
+                <div class="col-md-7">
+                    <h3>Name : {{doctor.name}}</h3>
+                </div>
+
+                <div class="col-md-3">
+                    <h3>
+                        Experience :{{doctor.experience_in_years}} Years
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>Phone No : </h3>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>{{doctor.phone}}
+                        </h3>
+                    </div>
+                    <div class="col-md-6 ">
+                        {% if doctor.occupied %} <h3>Doctor is Occupied (background is red)</h3>
+                        {% else %}
+                        <h3>Doctor is Not Occupied (background is grey)</h3>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block JS %}
+
+{% endblock %}

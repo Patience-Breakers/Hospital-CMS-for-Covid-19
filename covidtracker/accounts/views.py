@@ -81,6 +81,9 @@ def patients(request, myid):
     patient = Patient.objects.filter(patient_id=myid)
     return render(request, 'patient.html', {'patient': patient[0]})
 
+def doctors(request,myid):
+    doctor=Doctor.objects.filter(doctor_id=myid)
+    return render(request,'doctor.html',{'doctor':doctor[0]})
 
 def allpatients(request):
     all_patients_query_set = Patient.objects.all()

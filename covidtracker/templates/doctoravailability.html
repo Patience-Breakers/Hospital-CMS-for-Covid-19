@@ -18,7 +18,7 @@
 
         {% for doctor in all_doctors %}
 
-        <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+        <a href="/doctors/{{doctor.doctor_id}}" style="text-decoration: none;">
             <li class="list-group-item list-group-item-action 
         {% if doctor.occupied %} list-group-item-danger {% else %} list-group-item-success {% endif %}
         ">
