@@ -11,11 +11,24 @@
 
 {% block body %}
 <!--todo graph for active, recovered, decreased and on ventilator Starts here -->
+<style>
+    .recovered {
+        flex: 10%;
+    }
+
+    .admitted {
+        flex: 40%;
+    }
+
+    .decreased {
+        flex: 50%;
+    }
+</style>
 <div class="container my-3">
     <div class="parent-row-block">
         <div class="child-block recovered">
             <div class="top-header-child">
-                <h1 class="text-center">Recovered - 50%</h1>
+                <h1 class="text-center">12</h1>
             </div>
             <div class="bottom-img-recovered">
 
@@ -23,7 +36,7 @@
         </div>
         <div class="child-block admitted">
             <div class="top-header-child-admitted">
-                <h1 class="text-center">Admitted</h1>
+                <h1 class="text-center">12</h1>
             </div>
             <div class="bottom-img-admitted">
                 <div class="parent-row-block">
@@ -37,7 +50,7 @@
         </div>
         <div class="child-block decreased">
             <div class="top-header-child">
-                <h1 class="text-center">Decreased</h1>
+                <h1 class="text-center">12</h1>
             </div>
             <div class="bottom-img-decreased">
 

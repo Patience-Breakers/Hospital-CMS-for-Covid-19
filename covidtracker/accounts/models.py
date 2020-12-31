@@ -44,6 +44,7 @@ class Patient (models.Model):
     date_admitted = models.DateField(auto_now=False, auto_now_add=False)
     oxygen_level = models.IntegerField(default=90)
     temperature = models.IntegerField(default=97)
+    decreased = models.BooleanField(default=False)
     # todo foreign keys 
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
     covid_test_result = models.ForeignKey(

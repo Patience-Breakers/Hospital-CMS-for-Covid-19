@@ -31,6 +31,8 @@
     <ul class="list-group">
 
         {% for patient in all_patients_query_set %}
+        {% if patient.decreased %}
+        {% else %}
         <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
             <li
                 class="list-group-item list-group-item-action {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
@@ -38,9 +40,26 @@
 
             </li>
         </a>
+        {% endif %}
+
         {% empty %}
         <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
         {% endfor %}
+
+        <h3 class="text-center">Decreased Patients</h3>
+        {% for patient in all_patients_query_set %}
+        {% if patient.decreased %}
+        <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+            <li class="list-group-item list-group-item-action ">
+                <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
+
+            </li>
+        </a>
+        {% endif %}
+        {% empty %}
+        <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
+        {% endfor %}
+
     </ul>
 </div>
 <!--todo legend Starts here-->
