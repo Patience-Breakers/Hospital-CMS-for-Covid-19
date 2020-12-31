@@ -1,5 +1,13 @@
 from django.db import models
 
+class ItemsTotalCount(models.Model):
+    ventilator=models.IntegerField(default=0)
+    ppe_kits=models.IntegerField(default=0)
+    gloves=models.IntegerField(default=0)
+    cotton_in_kg=models.IntegerField(default=0)
+
+
+
 
 class Doctor (models.Model):
 
