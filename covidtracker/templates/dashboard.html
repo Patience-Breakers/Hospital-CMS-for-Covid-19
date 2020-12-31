@@ -4,7 +4,9 @@
 {% block title %}Dashboard of the Covid Tracker{% endblock %}
 {% block cssLinks %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+    integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+    crossorigin="anonymous"></script>
 
 {% endblock %}
 
@@ -49,9 +51,9 @@
             </div>
             <div class="bottom-img-admitted">
                 <div class="parent-row-block">
-                    <div class="child-block non-ventilator">
+                    <div class="child-block non-ventilator text-center align-items-start">
                         nv </div>
-                    <div class="child-block ventilator">
+                    <div class="child-block ventilator text-center">
                         v
                     </div>
                 </div>
