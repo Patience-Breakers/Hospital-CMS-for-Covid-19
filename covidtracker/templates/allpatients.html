@@ -3,6 +3,7 @@
 
 {% block title %}All Patients | The ASA Covid Tracker{% endblock %}
 {% block cssLinks %}
+<link rel="stylesheet" href="{% static 'css/bed.css' %}">
 <link rel="stylesheet" href="{% static 'css/allpatients.css' %}">
 {% endblock %}
 
@@ -42,6 +43,23 @@
         {% endfor %}
     </ul>
 </div>
+<!--todo legend Starts here-->
+<div class="container">
+    <h1 class="text-center heading-legend">Legend</h1>
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col yellow list-group-item-warning  ">
+                Admitted
+            </div>
+            <div class="col red">
+                Ventilator
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--todo legend Ends here-->
 
 {% endblock %}
 
