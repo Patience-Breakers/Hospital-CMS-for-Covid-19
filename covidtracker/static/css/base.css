@@ -350,8 +350,11 @@ input[type="checkbox"] {
   border-radius: 4px;
   resize: vertical;
 }
-ul.form-group {
+ul.form-inline {
   list-style-type: none;
 }
 
+ul.form-group {
+  list-style-type: none;
+}
 /******************************************/
