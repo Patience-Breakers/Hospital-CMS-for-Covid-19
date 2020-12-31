@@ -32,6 +32,15 @@ def temp_list_calc_for_dashboard_pie(all_patients):
         tally_temperature[i] = tally_temperature[i]+1
     return tally_temperature
 
+# def count_of_all_ravd_dashboard(all_patients):
+#     recovered=0
+#     admitted=0
+#     ventilator=0
+#     decreased=0
+#     for patient in all_patients:
+#         if patient.covid_test_result.Covid_test==False:
+#             recovered=recovered+1
+#     list_of_main_dashboard_items=[recovered,admitted,ventilator,decreased]
 
 def dashboard(request):
     all_patients = Patient.objects.all()
