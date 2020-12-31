@@ -41,6 +41,9 @@
   background-repeat: no-repeat;
 }
 
+.bottom-img-admitted {
+  background-color: #ddecb3a2;
+}
 .recovered {
   background-color: #006117;
   flex: 50%;
@@ -59,7 +62,7 @@
   flex: 10%;
   color: black;
   background-image: url("https://res.cloudinary.com/dnv3ztqf1/image/upload/v1605876828/css/dashboard/ventilation_kethso.svg");
-  padding: 61.5px;
+  padding: 61.75px;
   background-size: 250px 100%;
   background-position: center;
   background-repeat: no-repeat;

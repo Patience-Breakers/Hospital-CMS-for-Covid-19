@@ -13,22 +13,31 @@
 <!--todo graph for active, recovered, decreased and on ventilator Starts here -->
 <style>
     .recovered {
-        flex: 10%;
+        flex: 0.10%;
     }
 
     .admitted {
-        flex: 40%;
+        flex: 49.9%;
     }
 
     .decreased {
+        flex: 50%;
+    }
+
+    .non-ventilator {
+        flex: 50%;
+    }
+
+    .ventilator {
         flex: 50%;
     }
 </style>
 <div class="container my-3">
     <div class="parent-row-block">
         <div class="child-block recovered">
-            <div class="top-header-child">
-                <h1 class="text-center">12</h1>
+            <div class="top-header-child text-center">
+                <p class="text-center">Recovered-12
+                </p>
             </div>
             <div class="bottom-img-recovered">
 
@@ -36,7 +45,7 @@
         </div>
         <div class="child-block admitted">
             <div class="top-header-child-admitted">
-                <h1 class="text-center">12</h1>
+                <p class="text-center">Admitted-12</p>
             </div>
             <div class="bottom-img-admitted">
                 <div class="parent-row-block">
@@ -50,7 +59,7 @@
         </div>
         <div class="child-block decreased">
             <div class="top-header-child">
-                <h1 class="text-center">12</h1>
+                <p class="text-center">Ventilator-12</p>
             </div>
             <div class="bottom-img-decreased">
 
