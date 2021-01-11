@@ -18,7 +18,7 @@ a.nav-link:before {
   content: "";
   position: absolute;
   width: 0;
-  height: 3px;
+  height: 4px;
   bottom: 0;
   left: 0;
   background-color: rgb(35, 141, 202);
@@ -30,3 +30,16 @@ a.nav-link:hover:before {
   width: 100%;
 }
 /* * NAVBAR link Underline Effect Ends here */
+
+/*todo the part that hs all links on right aligned Starts here*/
+.navbar-collapse {
+}
+.nav-link {
+  color: black !important;
+  transition: all 0.3s ease-in-out;
+  font-size: 23px;
+}
+.nav-link:hover {
+  color: red !important;
+}
+/*todo the part that hs all links on right aligned Ends here*/
