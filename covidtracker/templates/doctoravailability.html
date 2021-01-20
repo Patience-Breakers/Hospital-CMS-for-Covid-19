@@ -18,24 +18,35 @@
 
         {% for doctor in all_doctors %}
 
-        <a href="/doctors/{{doctor.doctor_id}}" style="text-decoration: none;">
-            <li class="list-group-item list-group-item-action 
-        {% if doctor.occupied %} list-group-item-danger {% else %} list-group-item-light {% endif %}
-        ">
-                <div class="row">
-                    <div class="col-md-9 header-of-list">
-                        Unique Id-{{doctor.pk}}. || {{doctor.name}} || Experience :
-                        {{doctor.experience_in_years}} Years
-                    </div>
-                    <div class="col-md-3 text-right">
-                        <b>
-                            {% if doctor.occupied %} OCCUPIED {% else %} NOT OCCUPIED {% endif %}
-                        </b>
-                    </div>
-                </div>
 
-            </li>
-        </a>
+
+        <div class="row">
+            <div class="col-11">
+                <a href="/doctors/{{doctor.doctor_id}}" style="text-decoration: none;">
+                    <li class="list-group-item list-group-item-action 
+                    {% if doctor.occupied %} list-group-item-danger {% else %} list-group-item-light {% endif %}
+                    ">
+                        <div class="row">
+                            <div class="col-md-9 header-of-list">
+                                Unique Id-{{doctor.pk}}. || {{doctor.name}} || Experience :
+                                {{doctor.experience_in_years}} Years
+                            </div>
+                            <div class="col-md-3 text-right">
+                                <b>
+                                    {% if doctor.occupied %} OCCUPIED {% else %} NOT OCCUPIED {% endif %}
+                                </b>
+                            </div>
+                        </div>
+
+                    </li>
+                </a>
+            </div>
+            <div class="col-1 text-center align-self-center">
+                <a href="/deleteDoctor/{{doctor.name}}">
+                    <img src="https://img.icons8.com/flat_round/64/000000/delete-sign.png" />
+                </a>
+            </div>
+        </div>
         {% empty %}
         <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
         {% endfor %}

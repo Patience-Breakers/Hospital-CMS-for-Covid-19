@@ -92,6 +92,12 @@ def patients(request, myid):
     return render(request, 'patient.html', {'patient': patient[0]})
 
 
+def deleteDoctor(request, doctorName):
+    doctor = Doctor.objects.get(name=doctorName)
+    doctor.delete()
+    return redirect('/doctoravailability/')
+
+
 def deletePatient(request, myid):
     patient = Patient.objects.get(patient_id=myid)
     doctor_id = patient.doctor
