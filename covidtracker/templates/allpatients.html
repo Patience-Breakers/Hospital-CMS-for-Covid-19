@@ -33,13 +33,23 @@
         {% for patient in all_patients_query_set %}
         {% if patient.decreased %}
         {% else %}
-        <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
-            <li
-                class="list-group-item list-group-item-action {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
-                <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
+        <div class="row">
+            <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
 
-            </li>
-        </a>
+                    <li
+                        class="list-group-item list-group-item-action {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
+                        <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
+
+                    </li>
+                </a></div>
+            <div class="col-1 text-center align-self-center">
+                <a href="/deletePatient/{{patient.patient_id}}">
+                    <img src="https://img.icons8.com/flat_round/64/000000/delete-sign.png" />
+                </a>
+            </div>
+
+        </div>
+
         {% endif %}
 
         {% empty %}
