@@ -13,7 +13,7 @@ urlpatterns = [
     path("allpatients/", views.allpatients, name='allPatients'),
     # todo Delete the patient, Doctor
     path('deletePatient/<int:myid>/', views.deletePatient, name='deletePatient'),
-    path('deleteDoctor/<str:doctorName>/', views.deleteDoctor, name='deleteDoctor'),
+    path('deleteDoctor/<int:pk>/', views.deleteDoctor, name='deleteDoctor'),
 
 
     # todo  forms have url mapping as 'name' not 'name/'
