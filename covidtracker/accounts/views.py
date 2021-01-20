@@ -50,12 +50,15 @@ def dashboard(request):
 
     list_keys_age = list(tally_age)
     list_values_age = list(tally_age.values())
-
     list_keys_temp = list(tally_temperature)
     list_values_temp = list(tally_temperature.values())
-
-    context = {'all_patients': all_patients,
-               'list_keys_age': list_keys_age, 'list_values_age': list_values_age, 'list_keys_temp': list_keys_temp, 'list_values_temp': list_values_temp}
+    context = {
+        'all_patients': all_patients,
+        'list_keys_age': list_keys_age,
+        'list_values_age': list_values_age,
+        'list_keys_temp': list_keys_temp,
+        'list_values_temp': list_values_temp
+    }
     return render(request, 'dashboard.html', context)
 # todo ----------part of dashboard ends here----------------------------------
 
@@ -66,7 +69,9 @@ def search(request):
         all_search_patients_acc_to_name = Patient.objects.filter(
             name__icontains=query)
         context = {
-            'all_search_patients_acc_to_name': all_search_patients_acc_to_name, 'query': query}
+            'all_search_patients_acc_to_name': all_search_patients_acc_to_name,
+            'query': query
+        }
         return render(request, 'result_of_search.html', context)
 
     return render(request, 'result_of_search.html')
@@ -76,14 +81,19 @@ def bedavailability(request):
     all_rooms_objects = Room.objects.all()
     max_rooms_on_floor = 6
 
-    context = {'list': list, 'all_rooms_objects': all_rooms_objects,
-               'max_rooms_on_floor': max_rooms_on_floor}
+    context = {
+        'list': list,
+        'all_rooms_objects': all_rooms_objects,
+        'max_rooms_on_floor': max_rooms_on_floor,
+    }
     return render(request, 'bedavailability.html', context)
 
 
 def doctoravailability(request):
     all_doctor_objects = Doctor.objects.all()
-    context = {'all_doctors': all_doctor_objects}
+    context = {
+        'all_doctors': all_doctor_objects
+    }
     return render(request, 'doctoravailability.html', context)
 
 
@@ -94,6 +104,13 @@ def patients(request, myid):
 
 def deleteDoctor(request, pk):
     doctor = Doctor.objects.get(pk=pk)
+    doctor_id = doctor.doctor_id
+    patient = Patient.objects.get(doctor=doctor_id)
+    room_id = patient.room_no_and_bed_no
+    room = Room.objects.get(room_no=room_id)
+    room.occupied = False
+    room.ventilator = False
+    room.save()
     doctor.delete()
     return redirect('/doctoravailability/')
 
@@ -120,22 +137,20 @@ def doctors(request, myid):
 
 def allpatients(request):
     all_patients_query_set = Patient.objects.all()
-    context = {'all_patients_query_set': all_patients_query_set}
+    context = {
+        'all_patients_query_set': all_patients_query_set
+    }
     return render(request, 'allpatients.html', context)
 
 
 def adddoctor(request):
     # if we get POST method, we will use this
     if request.method == 'POST':
-
         form = DoctorForm(request.POST)
-
         # check whether it's valid:
         if form.is_valid():
             form.save()
-
             return HttpResponseRedirect('/doctoravailability/')
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = DoctorForm()
@@ -145,28 +160,23 @@ def adddoctor(request):
 def addpatient(request):
     # if we get POST method, we will use this
     if request.method == 'POST':
-
         form = PatientForm(request.POST)
-
         # check whether it's valid:
         if form.is_valid():
             form.save()
             room_no = request.POST.get('room_no_and_bed_no')
             ventilator = request.POST.get('ventilator')
             doctor_no = request.POST.get('doctor')
-
             room = Room.objects.get(pk=room_no)
             room.occupied = True
             if ventilator == 'yes':
                 room.ventilator = True
             room.save()
-
             # todo docotor avialable changed
             # doctor = Room.objects.get(pk=3)
             doctor = Doctor.objects.get(pk=doctor_no)
             doctor.occupied = True
             doctor.save()
-
             return HttpResponseRedirect('/allpatients/')
 
     # if a GET (or any other method) we'll create a blank form

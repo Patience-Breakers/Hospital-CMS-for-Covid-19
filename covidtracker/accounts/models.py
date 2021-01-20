@@ -48,7 +48,6 @@ class Patient (models.Model):
     )
     gender = models.CharField(max_length=2, null=True,
                               choices=GENDERS, default='M')
-
     phone = models.CharField(max_length=13)
     address = models.TextField(max_length=1000)
     email_id = models.EmailField(max_length=254)
@@ -57,7 +56,7 @@ class Patient (models.Model):
     temperature = models.IntegerField(default=97)
     decreased = models.BooleanField(default=False)
 
-    # todo foreign keys
+    # todo foreign keys models
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
     covid_test_result = models.ForeignKey(
         Result, on_delete=models.CASCADE, default="")
