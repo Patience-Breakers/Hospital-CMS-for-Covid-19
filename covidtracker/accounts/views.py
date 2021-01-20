@@ -94,7 +94,12 @@ def patients(request, myid):
 
 def deletePatient(request, myid):
     patient = Patient.objects.get(patient_id=myid)
+    room_id = patient.room_no_and_bed_no
+    room = Room.objects.get(room_no=room_id)
     patient.delete()
+    room.occupied = False
+    room.ventilator = False
+    room.save()
     return redirect('/allpatients')
 
 
