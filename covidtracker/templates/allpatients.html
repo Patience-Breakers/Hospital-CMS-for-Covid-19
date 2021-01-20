@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block body %}
+
 <div class="container">
     <h1 class="text-center heading ">All Patients</h1>
     <ul>
@@ -53,7 +54,7 @@
         {% endif %}
 
         {% empty %}
-        <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
+        <li class="list-group-item list-group-item-action">NO ITEMS ADDED HERE</li>
         {% endfor %}
 
         <h3 class="text-center">Decreased Patients</h3>
@@ -67,7 +68,7 @@
         </a>
         {% endif %}
         {% empty %}
-        <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
+        <li class="list-group-item list-group-item-action">NO ITEMS ADDED HERE</li>
         {% endfor %}
 
     </ul>
@@ -93,5 +94,4 @@
 {% endblock %}
 
 {% block JS %}
-
 {% endblock %}

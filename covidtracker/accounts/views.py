@@ -42,6 +42,7 @@ def temp_list_calc_for_dashboard_pie(all_patients):
 #             recovered=recovered+1
 #     list_of_main_dashboard_items=[recovered,admitted,ventilator,decreased]
 
+
 def dashboard(request):
     all_patients = Patient.objects.all()
     tally_age = age_list_calc_for_dashboard_pie(all_patients)
@@ -90,9 +91,17 @@ def patients(request, myid):
     patient = Patient.objects.filter(patient_id=myid)
     return render(request, 'patient.html', {'patient': patient[0]})
 
-def doctors(request,myid):
-    doctor=Doctor.objects.filter(doctor_id=myid)
-    return render(request,'doctor.html',{'doctor':doctor[0]})
+
+def deletePatient(request, myid):
+    patient = Patient.objects.get(patient_id=myid)
+    patient.delete()
+    return redirect('/allpatients')
+
+
+def doctors(request, myid):
+    doctor = Doctor.objects.filter(doctor_id=myid)
+    return render(request, 'doctor.html', {'doctor': doctor[0]})
+
 
 def allpatients(request):
     all_patients_query_set = Patient.objects.all()
