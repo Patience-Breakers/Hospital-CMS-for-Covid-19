@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap_datepicker_plus',
 ]
+# pip install django-bootstrap_datepicker_plus
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -94,11 +94,15 @@ def patients(request, myid):
 
 def deletePatient(request, myid):
     patient = Patient.objects.get(patient_id=myid)
+    doctor_id = patient.doctor
+    doctor = Doctor.objects.get(name=doctor_id)
     room_id = patient.room_no_and_bed_no
     room = Room.objects.get(room_no=room_id)
     patient.delete()
     room.occupied = False
     room.ventilator = False
+    doctor.occupied = False
+    doctor.save()
     room.save()
     return redirect('/allpatients')
 
