@@ -1,10 +1,11 @@
 from django.db import models
 
+
 class ItemsTotalCount(models.Model):
-    ventilator=models.IntegerField(default=0)
-    ppe_kits=models.IntegerField(default=0)
-    gloves=models.IntegerField(default=0)
-    cotton_in_kg=models.IntegerField(default=0)
+    ventilator = models.IntegerField(default=0)
+    ppe_kits = models.IntegerField(default=0)
+    gloves = models.IntegerField(default=0)
+    cotton_in_kg = models.IntegerField(default=0)
 
 
 class Doctor (models.Model):
@@ -18,11 +19,13 @@ class Doctor (models.Model):
     def __str__(self):
         return self.name
 
+
 class Result (models.Model):
     Covid_test = models.CharField(default="", max_length=500)
 
     def __str__(self):
         return self.Covid_test
+
 
 class Room (models.Model):
     floor_no = models.IntegerField(default=0)
@@ -33,11 +36,19 @@ class Room (models.Model):
     def __str__(self):
         return self.room_no
 
+
 class Patient (models.Model):
     patient_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     age = models.IntegerField()
-    gender = models.CharField(max_length=10)  # Male of Female
+    GENDERS = (
+        (u'M', u'Male'),
+        (u'F', u'Female'),
+        (u'T', u'Transgender'),
+    )
+    gender = models.CharField(max_length=2, null=True,
+                              choices=GENDERS, default='M')
+
     phone = models.CharField(max_length=13)
     address = models.TextField(max_length=1000)
     email_id = models.EmailField(max_length=254)
@@ -45,7 +56,8 @@ class Patient (models.Model):
     oxygen_level = models.IntegerField(default=90)
     temperature = models.IntegerField(default=97)
     decreased = models.BooleanField(default=False)
-    # todo foreign keys 
+
+    # todo foreign keys
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
     covid_test_result = models.ForeignKey(
         Result, on_delete=models.CASCADE, default="")
@@ -54,4 +66,3 @@ class Patient (models.Model):
 
     def __str__(self):
         return self.name
-    
