@@ -3,6 +3,8 @@
 
 {% block title %}Add Patient Page | The ASA Covid Tracker{% endblock %}
 {% block cssLinks %}
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css"> -->
 <link rel="stylesheet" href="{% static 'css/allpatients.css' %}">
 {% endblock %}
 
@@ -11,11 +13,16 @@
     <h1 class="text-center my-3">Add Patient</h1>
     <form action="/addpatient" method="post" class="form-group">
         {% csrf_token %}
+
         <ul class="form-group">
             {{ form.as_ul }}
-
         </ul>
+        <!--todo to change the VALUE OF TYPE TO DATE AS WE CAN'T DO IN DJANGO FORMS-->
+        <script>
+            document.getElementById("id_date_admitted").type = "date";
+            document.getElementById("id_date_admitted").style = "padding:1%;margin:1%;";
 
+        </script>
         <ul>
             <label for="ventilator">Ventilator Required?</label>
             <select name="ventilator" class="form-control" id="ventilator">
