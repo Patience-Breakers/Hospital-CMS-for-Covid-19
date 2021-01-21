@@ -14,3 +14,10 @@
   font-weight: 400;
   font-size: 20px;
 }
+
+.hover-item {
+  transition-duration: 0.3s ease-in;
+}
+.hover-item:hover {
+  transform: scale(1.1);
+}
