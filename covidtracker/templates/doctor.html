@@ -12,45 +12,31 @@
     <br><br>
     <h1 class="text-center">Doctor Data</h1>
     <br><br>
-    <div class="jumbotron text-center  {% if doctor.occupied %} list-group-item-danger {% endif %}">
-
-        <div class="container align-items-center ">
-            <div class="row">
-                <div class="co-md-3">
-                    <h3>Unique Id: {{doctor.doctor_id}}</h3>
-                </div>
-                <div class="col-md-7">
-                    <h3>Name : {{doctor.name}}</h3>
-                </div>
-
-                <div class="col-md-3">
-                    <h3>
-                        Experience :{{doctor.experience_in_years}} Years
-                    </h3>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <h3>Phone No : </h3>
-                    </div>
-                    <div class="col-md-3">
-                        <h3>{{doctor.phone}}
-                        </h3>
-                    </div>
-                    <div class="col-md-6 ">
-                        {% if doctor.occupied %} <h3>Doctor is Occupied (background is red)</h3>
-                        {% else %}
-                        <h3>Doctor is Not Occupied (background is grey)</h3>
-                        {% endif %}
-                    </div>
-                </div>
-
-
-
-
-            </div>
-        </div>
-    </div>
+    <table class="table {% if doctor.occupied %} table-danger {% endif %}">
+        <tr class="table-row">
+            <th scope="row">Unique ID</th>
+            <td>{{doctor.doctor_id}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Name</th>
+            <td>{{doctor.name}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Phone</th>
+            <td>{{doctor.phone}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Experience in Years</th>
+            <td>{{doctor.experience_in_years}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Occupied</th>
+            <td>{% if doctor.occupied %}Yes{% else %}No{% endif %}</td>
+        </tr>
+    </table>
 </div>
+
+
 {% endblock %}
 
 {% block JS %}

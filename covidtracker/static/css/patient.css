@@ -25,3 +25,7 @@
 .yellow {
   background-color: #f8ff8f;
 }
+
+.table-row td {
+  font-size: 25px;
+}
