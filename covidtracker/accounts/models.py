@@ -45,6 +45,8 @@ class Patient (models.Model):
         (u'M', u'Male'),
         (u'F', u'Female'),
         (u'T', u'Transgender'),
+        (u'O', u'Others'),
+
     )
     gender = models.CharField(max_length=2, null=True,
                               choices=GENDERS, default='M')
