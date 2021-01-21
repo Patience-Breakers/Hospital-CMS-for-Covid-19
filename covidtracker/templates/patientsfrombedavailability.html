@@ -1,0 +1,46 @@
+{% extends 'innerbase.html' %}
+{% load static %}
+
+{% block title %}List of Patients on Bed{% endblock %}
+{% block cssLinks %}
+{% endblock %}
+
+{% block body %}
+{% if empty %}
+<div class="container">
+    <h1 class="text-center m-5">
+        There are no Patients in this Room
+    </h1>
+    <div class="text-center">
+        <a href="/bedavailability/">
+            <button class="btn btn-info">
+                <h3>Return to Bed Availability</h3>
+            </button>
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="container">
+
+    <h1 class="text-center m-5">The List of Patients in Room no
+        {{first_patient.room_no_and_bed_no}}
+    </h1>
+
+    <ul class="list-group">
+        {% for patient in patients %}
+        <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+
+            <li
+                class="list-group-item list-group-item-action {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
+                <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
+
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block JS %}
+{% endblock %}

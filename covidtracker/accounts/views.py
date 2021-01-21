@@ -187,3 +187,25 @@ def addpatient(request):
     else:
         form = PatientForm()
         return render(request, 'add_patient.html', {'form': form})
+
+
+# todo to go to the patient from bed availability
+def bedforpatient(request, bedno):
+    print(bedno)
+    print(type(bedno))
+    patients = Patient.objects.filter(room_no_and_bed_no=bedno)
+    try:
+        empty = False
+        context = {
+            'patients': patients,
+            'first_patient': patients[0],
+            'empty': empty,
+        }
+    except:
+        empty = True
+        context = {
+            'patients': patients,
+            'empty': empty,
+
+        }
+    return render(request, 'patientsfrombedavailability.html', context)
