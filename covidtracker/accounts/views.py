@@ -105,13 +105,17 @@ def patients(request, myid):
 def deleteDoctor(request, pk):
     doctor = Doctor.objects.get(pk=pk)
     doctor_id = doctor.doctor_id
-    patient = Patient.objects.get(doctor=doctor_id)
-    room_id = patient.room_no_and_bed_no
-    room = Room.objects.get(room_no=room_id)
-    room.occupied = False
-    room.ventilator = False
-    room.save()
-    doctor.delete()
+    try:
+        patient = Patient.objects.get(doctor=doctor_id)
+        room_id = patient.room_no_and_bed_no
+        room = Room.objects.get(room_no=room_id)
+        room.occupied = False
+        room.ventilator = False
+        room.save()
+        doctor.delete()
+    except:
+        doctor.delete()
+
     return redirect('/doctoravailability/')
 
 

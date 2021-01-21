@@ -23,12 +23,23 @@
             <h1 class="text-center my-2">Floor {{room.floor_no}}</h1>
             <div class="floor1 row">
                 {% endif %}
-                <div class="col-sm room 
-                 {% if room.occupied %}yellow{% endif %}
-                {% if room.ventilator %}red{% endif %}                
-                ">
-                    {{room.room_no}}
+                <div class=" col-sm">
+                    <a href="/" style="text-decoration: none;">
+
+                        <div class="card-body     room  {% if room.occupied %}yellow{% endif %}
+                                    {% if room.ventilator %}red{% endif %} ">
+                            <h5 class="title-for-card">{{room.room_no}}</h5>
+                        </div>
+
+                    </a>
                 </div>
+
+                <!-- <div class="col-sm room 
+                                    {% if room.occupied %}yellow{% endif %}
+                                    {% if room.ventilator %}red{% endif %}                
+                ">
+                    <a href="/" style="text-decoration: none;color:black;">{{room.room_no}}</a>
+                </div> -->
                 {% endfor %}
             </div>
         </div>
