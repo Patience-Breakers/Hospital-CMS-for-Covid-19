@@ -1,0 +1,9 @@
+.btn-red-block {
+  color: white;
+  background-color: hsl(302, 97%, 46%);
+}
+
+.btn-red-block:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(14, 139, 255);
+}

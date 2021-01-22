@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="{% static 'css/adddoctor.css' %}">
 {% endblock %}
 
+{% block linkBelow %}
+<link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+{% endblock %}
 {% block body %}
 <div class="container ">
     <h1 class="text-center my-5 header display-4">Add Doctor</h1>
@@ -19,17 +22,11 @@
                 <ul class="unordered-list">
                     {{ form.as_ul }}
                 </ul>
-                <input class="btn-danger btn btn-block" type="submit">
+                <input class="btn btn-block btn-red-block" type="submit">
             </form>
         </div>
     </div>
 </div>
-
-
-<div class="container">
-
-</div>
-
 {% endblock %}
 
 {% block JS %}

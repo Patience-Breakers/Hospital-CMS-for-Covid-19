@@ -6,3 +6,9 @@ ul {
     display: none;
   }
 }
+label {
+  font-size: 18px;
+}
+input [type="submit"] {
+  font-size: 19px;
+}
