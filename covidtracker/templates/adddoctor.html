@@ -8,16 +8,21 @@
 
 {% block body %}
 <div class="container ">
-    <h1 class="text-center my-3">Add Doctor</h1>
-    <form action="/adddoctor" method="POST" class="form-group">
-        {% csrf_token %}
-        <ul class="unordered-list">
-            {{ form.as_ul }}
-
-        </ul>
-
-        <input class="btn-danger btn" type="submit">
-    </form>
+    <h1 class="text-center my-5 header display-4">Add Doctor</h1>
+    <div class="row">
+        <div class="col-sm block-to-disappear-in-mobile">
+            <img src="{% static '/svg/adddoctor.svg' %}" width="100%" alt="image for add doctor">
+        </div>
+        <div class="col-sm">
+            <form action="/adddoctor" method="POST" class="form-group">
+                {% csrf_token %}
+                <ul class="unordered-list">
+                    {{ form.as_ul }}
+                </ul>
+                <input class="btn-danger btn btn-block" type="submit">
+            </form>
+        </div>
+    </div>
 </div>
 
 
