@@ -358,3 +358,8 @@ ul.form-group {
   list-style-type: none;
 }
 /******************************************/
+@media (max-width: 999px) {
+  .block-to-disappear-in-mobile {
+    display: none;
+  }
+}

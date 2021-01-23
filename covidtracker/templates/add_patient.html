@@ -7,43 +7,49 @@
 <link rel="stylesheet" href="{% static 'css/allpatients.css' %}">
 {% endblock %}
 
+{% block linkBelow %}
+<link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+{% endblock %}
+
 {% block body %}
 <div class="container ">
-    <h1 class="text-center my-3">Add Patient</h1>
-    <form action="/addpatient" method="post" class="form-group">
-        {% csrf_token %}
+    <h1 class="text-center my-5 header display-4">Add Patient</h1>
 
-        <ul class="form-group">
-            {{ form.as_ul }}
-        </ul>
-        <!--todo to change the VALUE OF TYPE TO DATE AS WE CAN'T DO IN DJANGO FORMS-->
-        <script>
-            document.getElementById("id_date_admitted").type = "date";
-            document.getElementById("id_date_admitted").style = "padding:1%;margin:1%;";
-            //todo to get today date as default
-            var date = document.getElementById("id_date_admitted");
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
-            today = yyyy + '-' + mm + '-' + dd;
-            date.defaultValue = today;
+    <div class="row">
+        <div class="col-md block-to-disappear-in-mobile">
+            <img src="{% static '/svg/addpatient.svg' %}" width="100%" alt="Add patient image vector">
+        </div>
+        <div class="col-md">
+            <form action="/addpatient" method="post" class="form-group">
+                {% csrf_token %}
+                <ul class="form-group">
+                    {{ form.as_ul }}
+                </ul>
+                <!--todo to change the VALUE OF TYPE TO DATE AS WE CAN'T DO IN DJANGO FORMS-->
+                <script>
+                    document.getElementById("id_date_admitted").type = "date";
+                    document.getElementById("id_date_admitted").style = "padding:1%;margin:1%;";
+                    //todo to get today date as default
+                    var date = document.getElementById("id_date_admitted");
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = today.getFullYear();
+                    today = yyyy + '-' + mm + '-' + dd;
+                    date.defaultValue = today;
+                </script>
+                <ul>
+                    <label for="ventilator">Ventilator Required?</label>
+                    <select name="ventilator" class="form-control" id="ventilator">
+                        <option value="no">no</option>
+                        <option value="yes">yes</option>
+                    </select>
+                </ul>
+                <input class="btn btn-block btn-red-block" type="submit">
+            </form>
+        </div>
 
-
-
-        </script>
-        <ul>
-            <label for="ventilator">Ventilator Required?</label>
-            <select name="ventilator" class="form-control" id="ventilator">
-                <option value="no">no</option>
-                <option value="yes">yes</option>
-            </select>
-        </ul>
-
-
-
-        <input class="btn-danger btn" type="submit">
-    </form>
+    </div>
 </div>
 
 {% endblock %}

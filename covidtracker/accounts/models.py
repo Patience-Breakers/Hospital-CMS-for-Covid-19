@@ -51,7 +51,7 @@ class Patient (models.Model):
     gender = models.CharField(max_length=2, null=True,
                               choices=GENDERS, default='M')
     phone = models.CharField(max_length=13)
-    address = models.TextField(max_length=1000)
+    address = models.TextField(max_length=100)
     email_id = models.EmailField(max_length=254)
     date_admitted = models.DateField(auto_now=False, auto_now_add=False)
     oxygen_level = models.IntegerField(default=90)
