@@ -32,6 +32,12 @@ def temp_list_calc_for_dashboard_pie(all_patients):
         tally_temperature[i] = tally_temperature[i]+1
     return tally_temperature
 
+
+def bed_list_calc_for_dashboard_pie(all_patients):
+    all_rooms = Room.objects.all()
+    no_of_rooms = all_rooms.count()
+    print(no_of_rooms)
+
 # def count_of_all_ravd_dashboard(all_patients):
 #     recovered=0
 #     admitted=0
