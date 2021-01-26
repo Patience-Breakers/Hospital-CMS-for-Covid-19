@@ -32,6 +32,16 @@ def temp_list_calc_for_dashboard_pie(all_patients):
         tally_temperature[i] = tally_temperature[i]+1
     return tally_temperature
 
+def doctor_list_calc_for_dashboard_pie():
+    doctors =Doctor.objects.all()
+    total_no_doctors=doctors.count()
+    doctors_occupied=0
+    for doctor in doctors:
+        if doctor.occupied==True:
+            doctors_occupied+=1
+    non_occupied_doctors = total_no_doctors-doctors_occupied
+    return doctors_occupied, non_occupied_doctors
+
 
 def bed_list_calc_for_dashboard_pie():
     all_rooms = Room.objects.all()
@@ -40,7 +50,6 @@ def bed_list_calc_for_dashboard_pie():
     for i in all_rooms:
         if i.occupied == True:
             occupied_rooms += 1
-
     return occupied_rooms, total_no_of_rooms
 
 
@@ -50,6 +59,8 @@ def dashboard(request):
     tally_temperature = temp_list_calc_for_dashboard_pie(all_patients)
     no_of_occupied_beds, total_no_of_beds = bed_list_calc_for_dashboard_pie()
     non_occupied_no_of_beds = total_no_of_beds-no_of_occupied_beds
+    occupied_doctors, freedoctors = doctor_list_calc_for_dashboard_pie()
+
     list_keys_age = list(tally_age)
     list_values_age = list(tally_age.values())
     list_keys_temp = list(tally_temperature)
@@ -63,6 +74,8 @@ def dashboard(request):
         'list_values_temp': list_values_temp,
         'no_of_occupied_beds': no_of_occupied_beds,
         'non_occupied_no_of_beds': non_occupied_no_of_beds,
+        'occupied_doctors': occupied_doctors,
+        'freedoctors': freedoctors,
     }
     return render(request, 'dashboard.html', context)
 # todo ----------part of dashboard ends here----------------------------------

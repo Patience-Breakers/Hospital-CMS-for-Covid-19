@@ -81,9 +81,9 @@
                 <a class="list-group-item shadow m-1  list-group-item-action" id="list-temp-list" data-bs-toggle="list"
                     href="#list-temperature" role="tab" aria-controls="temperature"><b>Temperature</b></a>
                 <a class="list-group-item shadow m-1 list-group-item-action" id="list-days-list" data-bs-toggle="list"
-                    href="#list-days" role="tab" aria-controls="days"><b>No of Days idea-doctor%used</b></a>
+                    href="#list-days" role="tab" aria-controls="days"><b>Doctors</b></a>
                 <a class="list-group-item shadow m-1 list-group-item-action" id="list-beedused-list"
-                    data-bs-toggle="list" href="#list-bedused" role="tab" aria-controls="bedused"><b>Beds Used</b></a>
+                    data-bs-toggle="list" href="#list-bedused" role="tab" aria-controls="bedused"><b>Beds</b></a>
             </div>
         </div>
         <div class="col-md-10 align-self-center text-center">
@@ -218,7 +218,63 @@
                     </script>
                 </div>
                 <div class="tab-pane fade" id="list-days" role="tabpanel" aria-labelledby="list-days-list">
+                    <canvas id="doctorChart" width="40px" height="40px"></canvas>
+                    <script>
+                        var ctx = document.getElementById('doctorChart').getContext('2d');
+                        ctx.canvas.parentNode.style.width = "400px";
+                        ctx.canvas.parentNode.style.height = "400px";
 
+                        width = screen.width;
+                        if (width < 600) {
+                            ctx.canvas.parentNode.style.width = "300px";
+                            ctx.canvas.parentNode.style.height = "300px";
+                        }
+                        var myChart = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: [
+                                    'Occupied Doctors', 'Free Doctors'
+
+                                ],
+                                datasets: [{
+                                    label: '# of Votes',
+
+                                    data: [
+                                        {{ occupied_doctors }}, {{ freedoctors }}
+
+
+                        ],
+                        backgroundColor: [
+
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                                borderWidth: 1
+                                }]
+                            },
+                        options: {
+                            scales: {
+
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }, scales: false,
+
+                            }
+                        });
+                    </script>
 
                 </div>
                 <div class="tab-pane fade" id="list-bedused" role="tabpanel" aria-labelledby="list-bedused-list">
