@@ -33,37 +33,36 @@ def temp_list_calc_for_dashboard_pie(all_patients):
     return tally_temperature
 
 
-def bed_list_calc_for_dashboard_pie(all_patients):
+def bed_list_calc_for_dashboard_pie():
     all_rooms = Room.objects.all()
-    no_of_rooms = all_rooms.count()
-    print(no_of_rooms)
+    total_no_of_rooms = all_rooms.count()
+    occupied_rooms = 0
+    for i in all_rooms:
+        if i.occupied == True:
+            occupied_rooms += 1
 
-# def count_of_all_ravd_dashboard(all_patients):
-#     recovered=0
-#     admitted=0
-#     ventilator=0
-#     decreased=0
-#     for patient in all_patients:
-#         if patient.covid_test_result.Covid_test==False:
-#             recovered=recovered+1
-#     list_of_main_dashboard_items=[recovered,admitted,ventilator,decreased]
+    return occupied_rooms, total_no_of_rooms
 
 
 def dashboard(request):
     all_patients = Patient.objects.all()
     tally_age = age_list_calc_for_dashboard_pie(all_patients)
     tally_temperature = temp_list_calc_for_dashboard_pie(all_patients)
-
+    no_of_occupied_beds, total_no_of_beds = bed_list_calc_for_dashboard_pie()
+    non_occupied_no_of_beds = total_no_of_beds-no_of_occupied_beds
     list_keys_age = list(tally_age)
     list_values_age = list(tally_age.values())
     list_keys_temp = list(tally_temperature)
     list_values_temp = list(tally_temperature.values())
+
     context = {
         'all_patients': all_patients,
         'list_keys_age': list_keys_age,
         'list_values_age': list_values_age,
         'list_keys_temp': list_keys_temp,
-        'list_values_temp': list_values_temp
+        'list_values_temp': list_values_temp,
+        'no_of_occupied_beds': no_of_occupied_beds,
+        'non_occupied_no_of_beds': non_occupied_no_of_beds,
     }
     return render(request, 'dashboard.html', context)
 # todo ----------part of dashboard ends here----------------------------------
