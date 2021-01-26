@@ -1,25 +1,19 @@
-{% extends 'innerbase.html' %}
-{% load static %}
-
-{% block title %}Dashboard of the Covid Tracker{% endblock %}
-{% block cssLinks %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% extends 'innerbase.html' %} {% load static %} {% block title %}Dashboard of
+the Covid Tracker{% endblock %} {% block cssLinks %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
     integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
     crossorigin="anonymous"></script>
 
-{% endblock %}
-
-
-{% block body %}
+{% endblock %} {% block body %}
 <!--todo graph for active, recovered, decreased and on ventilator Starts here -->
 <style>
     .recovered {
-        flex: 0.10%;
+        flex: 50%;
     }
 
     .admitted {
-        flex: 49.9%;
+        flex: 50%;
     }
 
     .decreased {
@@ -38,34 +32,28 @@
     <div class="parent-row-block">
         <div class="child-block recovered">
             <div class="top-header-child text-center">
-                <p class="text-center">Recovered-12
-                </p>
+                <p class="text-center">Recovered - {{recovered_patients_count}}</p>
             </div>
-            <div class="bottom-img-recovered">
-
-            </div>
+            <div class="bottom-img-recovered"></div>
         </div>
         <div class="child-block admitted">
             <div class="top-header-child-admitted">
-                <p class="text-center">Admitted-12</p>
+                <p class="text-center">Admitted - {{admitted_patients_count}}</p>
             </div>
             <div class="bottom-img-admitted">
                 <div class="parent-row-block">
                     <div class="child-block non-ventilator text-center align-items-start">
-                        nv </div>
-                    <div class="child-block ventilator text-center">
-                        v
+                        {{non_ventilator_count}}
                     </div>
+                    <div class="child-block ventilator text-center">{{ventilator_patients_count}}</div>
                 </div>
             </div>
         </div>
         <div class="child-block decreased">
             <div class="top-header-child">
-                <p class="text-center">Decreased-12</p>
+                <p class="text-center">Decreased - {{decreased_patients_count}}</p>
             </div>
-            <div class="bottom-img-decreased">
-
-            </div>
+            <div class="bottom-img-decreased"></div>
         </div>
     </div>
 </div>
@@ -73,12 +61,12 @@
 <!--todo PieCharts & Bar Graph Starts Here -->
 
 <div class="container">
-    <div class="row ">
+    <div class="row">
         <div class="col-md-2 align-self-center">
             <div class="list-group p-2" id="list-tab" role="tablist">
                 <a class="list-group-item shadow m-1 list-group-item-action active" id="list-age-list"
                     data-bs-toggle="list" href="#list-age" role="tab" aria-controls="age"><b>Age</b></a>
-                <a class="list-group-item shadow m-1  list-group-item-action" id="list-temp-list" data-bs-toggle="list"
+                <a class="list-group-item shadow m-1 list-group-item-action" id="list-temp-list" data-bs-toggle="list"
                     href="#list-temperature" role="tab" aria-controls="temperature"><b>Temperature</b></a>
                 <a class="list-group-item shadow m-1 list-group-item-action" id="list-days-list" data-bs-toggle="list"
                     href="#list-days" role="tab" aria-controls="days"><b>Doctors</b></a>
@@ -107,15 +95,15 @@
 
 
                                     {% for i in list_keys_age %}
-                                        'AGE {{i}}',
-                        {% endfor %}
-                                ],
+                            'AGE {{i}}',
+            {% endfor %}
+                    ],
                         datasets: [{
                             label: '# of Votes',
 
                             data: [
                                 {% for i in list_values_age %}
-                                        {{ i }},
+                            {{ i }},
                         {% endfor %}
 
 
@@ -137,8 +125,8 @@
                                     'rgba(255, 159, 64, 1)'
                                 ],
                                     borderWidth: 1
-                                }]
-                            },
+                    }]
+                },
                         options: {
                             scales: {
 
@@ -149,8 +137,8 @@
                                 }]
                             }, scales: false,
 
-                            }
-                        });
+                }
+            });
                     </script>
                 </div>
 
@@ -171,16 +159,16 @@
                             data: {
                                 labels: [
                                     {% for i in list_keys_temp %}
-                                        'Temperature {{i}}°F',
-                        {% endfor %}    
+                            'Temperature {{i}}°F',
+            {% endfor %}
 
-                                ],
+                    ],
                         datasets: [{
                             label: '# of Votes',
                             data: [
 
                                 {% for i in list_values_temp %}
-                                        {{ i }},
+                            {{ i }},
                         {% endfor %}
 
 
@@ -202,8 +190,8 @@
                                     'rgba(255, 159, 64, 1)'
                                 ],
                                     borderWidth: 1
-                                }]
-                            },
+                    }]
+                },
                         options: {
                             scales: {
                                 yAxes: [{
@@ -213,8 +201,8 @@
                                 }]
                             }, scales: false,
 
-                            }
-                        });
+                }
+            });
                     </script>
                 </div>
                 <div class="tab-pane fade" id="list-days" role="tabpanel" aria-labelledby="list-days-list">
@@ -243,7 +231,7 @@
                                         {{ freedoctors }}, {{ occupied_doctors }}
 
 
-                        ],
+            ],
                         backgroundColor: [
                             'rgba(40, 167, 70, 0.2)',
                             'rgba(220, 53, 70, 0.2)',
@@ -255,8 +243,8 @@
                                 'rgba(255, 159, 64, 1)'
                             ],
                                 borderWidth: 1
-                                }]
-                            },
+                    }]
+                },
                         options: {
                             scales: {
 
@@ -267,10 +255,9 @@
                                 }]
                             }, scales: false,
 
-                            }
-                        });
+                }
+            });
                     </script>
-
                 </div>
                 <div class="tab-pane fade" id="list-bedused" role="tabpanel" aria-labelledby="list-bedused-list">
                     <canvas id="bedChart" width="40px" height="40px"></canvas>
@@ -301,7 +288,7 @@
                                         {{ no_of_occupied_beds }}, {{ non_occupied_no_of_beds }}
 
 
-                        ],
+            ],
                         backgroundColor: [
 
                             'rgba(255, 206, 86, 0.2)',
@@ -317,8 +304,8 @@
                                 'rgba(255, 159, 64, 1)'
                             ],
                                 borderWidth: 1
-                                }]
-                            },
+                    }]
+                },
                         options: {
                             scales: {
 
@@ -329,22 +316,14 @@
                                 }]
                             }, scales: false,
 
-                            }
-                        });
+                }
+            });
                     </script>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
 <!--todo PieCharts Ends Here -->
 
-
-
-{% endblock %}
-
-{% block JS %}
-
-{% endblock %}
+{% endblock %} {% block JS %} {% endblock %}

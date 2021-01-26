@@ -54,7 +54,7 @@ def bed_list_calc_for_dashboard_pie():
     return occupied_rooms, total_no_of_rooms
 
 
-def decreased_patients_count(total_patients):
+def decreased_patients_calculator(total_patients):
     decreased_patients_count = 0
     for patient in total_patients:
         if patient.decreased == True:
@@ -65,7 +65,7 @@ def decreased_patients_count(total_patients):
 def recovered_patients_calculator(total_patients):
     recovered_patients = 0
     for patient in total_patients:
-        if patient.covid_test_result.recovered == True:
+        if patient.recovered == True:
             recovered_patients += 1
     return recovered_patients
 
@@ -73,24 +73,54 @@ def recovered_patients_calculator(total_patients):
 def ventilator_patients_calculator(total_patients):
     ventilator_patients = 0
     for patient in total_patients:
-        if patient.ventilator == True:
+        if patient.room_no_and_bed_no.ventilator == True:
             ventilator_patients += 1
     return ventilator_patients
 
 
-def top_dashboard_values():
+def dashboard_top():
     total_patients = Patient.objects.all()
-    decreased_patients_count = decreased_patients_count(total_patients)
+    total_patients_count = total_patients.count()
+
+    admitted_patients_count = 0
+    if total_patients_count == 0:
+        total_patients_count = 5
+        admitted_patients_count = -5
+
+    decreased_patients_count = decreased_patients_calculator(total_patients)
     recovered_patients_count = recovered_patients_calculator(total_patients)
     ventilator_patients_count = ventilator_patients_calculator(total_patients)
-    admitted_patients_count = total_patients - \
-        decreased_patients_count-recovered_patients_count
+
+    admitted_patients_count += total_patients_count
+    admitted_patients_count -= decreased_patients_count
+    admitted_patients_count -= recovered_patients_count
     non_ventilator_count = admitted_patients_count-ventilator_patients_count
 
-    return recovered_patients_count,
+    percentage_recovered = 100*(recovered_patients_count/total_patients_count)
+    percentage_admitted = 100*(admitted_patients_count/total_patients_count)
+    percentage_decreased = 100*(decreased_patients_count/total_patients_count)
+    if non_ventilator_count+ventilator_patients_count == 0:
+        non_ventilator_count = 1
+        ventilator_patients_count = 1
+    percentage_non_ventilator = 100 * \
+        (non_ventilator_count/(non_ventilator_count+ventilator_patients_count))
+    percentage_ventilator = 100 * \
+        (ventilator_patients_count/(non_ventilator_count+ventilator_patients_count))
+
+    total_patients = Patient.objects.all()
+    total_patients_count = total_patients.count()
+    if total_patients_count == 0:
+        non_ventilator_count = 0
+        ventilator_patients_count = 0
+
+    return percentage_recovered, percentage_admitted, percentage_decreased, percentage_non_ventilator, percentage_ventilator, recovered_patients_count, decreased_patients_count, admitted_patients_count, non_ventilator_count, ventilator_patients_count
 
 
 def dashboard(request):
+    # todo the top dashboard Starts here
+    percentage_recovered, percentage_admitted, percentage_decreased, percentage_non_ventilator, percentage_ventilator, recovered_patients_count, decreased_patients_count, admitted_patients_count, non_ventilator_count, ventilator_patients_count = dashboard_top()
+    # todo the top dashboard Ends here
+
     all_patients = Patient.objects.all()
     tally_age = age_list_calc_for_dashboard_pie(all_patients)
     tally_temperature = temp_list_calc_for_dashboard_pie(all_patients)
@@ -113,6 +143,19 @@ def dashboard(request):
         'non_occupied_no_of_beds': non_occupied_no_of_beds,
         'occupied_doctors': occupied_doctors,
         'freedoctors': freedoctors,
+        # ? percentage values in style tag (css)
+        'percentage_recovered': percentage_recovered,
+        'percentage_admitted': percentage_admitted,
+        'percentage_decreased': percentage_decreased,
+        'percentage_non_ventilator': percentage_non_ventilator,
+        'percentage_ventilator': percentage_ventilator,
+        # ? data values in html
+
+        'recovered_patients_count': recovered_patients_count,
+        'decreased_patients_count': decreased_patients_count,
+        'admitted_patients_count':  admitted_patients_count,
+        'non_ventilator_count':  non_ventilator_count,
+        'ventilator_patients_count':  ventilator_patients_count,
     }
     return render(request, 'dashboard.html', context)
 # todo ----------part of dashboard ends here----------------------------------
