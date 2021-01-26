@@ -32,13 +32,14 @@ def temp_list_calc_for_dashboard_pie(all_patients):
         tally_temperature[i] = tally_temperature[i]+1
     return tally_temperature
 
+
 def doctor_list_calc_for_dashboard_pie():
-    doctors =Doctor.objects.all()
-    total_no_doctors=doctors.count()
-    doctors_occupied=0
+    doctors = Doctor.objects.all()
+    total_no_doctors = doctors.count()
+    doctors_occupied = 0
     for doctor in doctors:
-        if doctor.occupied==True:
-            doctors_occupied+=1
+        if doctor.occupied == True:
+            doctors_occupied += 1
     non_occupied_doctors = total_no_doctors-doctors_occupied
     return doctors_occupied, non_occupied_doctors
 
@@ -51,6 +52,42 @@ def bed_list_calc_for_dashboard_pie():
         if i.occupied == True:
             occupied_rooms += 1
     return occupied_rooms, total_no_of_rooms
+
+
+def decreased_patients_count(total_patients):
+    decreased_patients_count = 0
+    for patient in total_patients:
+        if patient.decreased == True:
+            decreased_patients_count += 1
+    return decreased_patients_count
+
+
+def recovered_patients_calculator(total_patients):
+    recovered_patients = 0
+    for patient in total_patients:
+        if patient.covid_test_result.recovered == True:
+            recovered_patients += 1
+    return recovered_patients
+
+
+def ventilator_patients_calculator(total_patients):
+    ventilator_patients = 0
+    for patient in total_patients:
+        if patient.ventilator == True:
+            ventilator_patients += 1
+    return ventilator_patients
+
+
+def top_dashboard_values():
+    total_patients = Patient.objects.all()
+    decreased_patients_count = decreased_patients_count(total_patients)
+    recovered_patients_count = recovered_patients_calculator(total_patients)
+    ventilator_patients_count = ventilator_patients_calculator(total_patients)
+    admitted_patients_count = total_patients - \
+        decreased_patients_count-recovered_patients_count
+    non_ventilator_count = admitted_patients_count-ventilator_patients_count
+
+    return recovered_patients_count,
 
 
 def dashboard(request):

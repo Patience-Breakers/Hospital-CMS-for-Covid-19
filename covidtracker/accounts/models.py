@@ -57,6 +57,7 @@ class Patient (models.Model):
     oxygen_level = models.IntegerField(default=90)
     temperature = models.IntegerField(default=97)
     decreased = models.BooleanField(default=False)
+    recovered = models.BooleanField(default=False)
 
     # todo foreign keys models
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, default="")
