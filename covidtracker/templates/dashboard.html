@@ -32,13 +32,13 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
     <div class="parent-row-block">
         <div class="child-block recovered">
             <div class="top-header-child text-center">
-                <p class="text-center">Recovered - {{recovered_patients_count}}</p>
+                <h4 class="text-center">Recovered - {{recovered_patients_count}}</h4>
             </div>
             <div class="bottom-img-recovered"></div>
         </div>
         <div class="child-block admitted">
             <div class="top-header-child-admitted">
-                <p class="text-center">Admitted - {{admitted_patients_count}}</p>
+                <h4 class="text-center">Admitted - {{admitted_patients_count}}</h4>
             </div>
             <div class="bottom-img-admitted">
                 <div class="parent-row-block">
@@ -51,7 +51,7 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
         </div>
         <div class="child-block decreased">
             <div class="top-header-child">
-                <p class="text-center">Decreased - {{decreased_patients_count}}</p>
+                <h4 class="text-center">Decreased - {{decreased_patients_count}}</h4>
             </div>
             <div class="bottom-img-decreased"></div>
         </div>
@@ -74,7 +74,8 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
                     data-bs-toggle="list" href="#list-bedused" role="tab" aria-controls="bedused"><b>Beds</b></a>
             </div>
         </div>
-        <div class="col-md-10 align-self-center text-center">
+
+        <div class="col-md-6 align-self-center text-center">
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-age" role="tabpanel" aria-labelledby="list-age-list">
                     <canvas id="myChart" width="40px" height="40px"></canvas>
@@ -319,6 +320,51 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
                 }
             });
                     </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 align-self-center">
+            <h2 class="text-center header display-6">Items Availability</h2>
+            <div class="progress-bar-for-ventilators mb-3">
+                <h5>Ventilators Used</h5>
+                <div class="progress">
+                    <div class="progress-bar bg-success w-75" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger w-25" role="progressbar" aria-valuenow="30" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="progress-bar-for-ppe-kits mb-3">
+                <h5>PPE Kits Used</h5>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="progress-bar-for-gloves mb-3">
+                <h5>Ventilators Used</h5>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="progress-bar-for-cotton mb-3">
+                <h5>Ventilators Used</h5>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
+                        aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
         </div>
