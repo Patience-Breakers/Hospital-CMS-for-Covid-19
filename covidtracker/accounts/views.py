@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
-from .models import Patient, Room, Doctor
+from .models import Patient, Room, Doctor, ItemsTotalCount
 from .forms import PatientForm, DoctorForm
 import collections
 
@@ -116,6 +116,26 @@ def dashboard_top():
     return percentage_recovered, percentage_admitted, percentage_decreased, percentage_non_ventilator, percentage_ventilator, recovered_patients_count, decreased_patients_count, admitted_patients_count, non_ventilator_count, ventilator_patients_count
 
 
+def items_count():
+    item = ItemsTotalCount.objects.get(pk=1)
+    vaccines_count = item.vaccines
+    vaccines_used_count = item.vaccines_used
+    ppe_kits_count = item.ppe_kits
+    ppe_kits_used_count = item.ppe_kits_used
+    ventilator_count = item.ventilator
+    return vaccines_count, vaccines_used_count, ppe_kits_count, ppe_kits_used_count, ventilator_count
+
+
+def percentage_calculator_two_input(numerator, x, y):
+    percentage = 100*(numerator/(x+y))
+    return percentage
+
+
+def percentage_calculator_three_input(numerator, x, y, z):
+    percentage = 100*(numerator/(x+y+z))
+    return percentage
+
+
 def dashboard(request):
     # todo the top dashboard Starts here
     percentage_recovered, percentage_admitted, percentage_decreased, percentage_non_ventilator, percentage_ventilator, recovered_patients_count, decreased_patients_count, admitted_patients_count, non_ventilator_count, ventilator_patients_count = dashboard_top()
@@ -132,6 +152,9 @@ def dashboard(request):
     list_values_age = list(tally_age.values())
     list_keys_temp = list(tally_temperature)
     list_values_temp = list(tally_temperature.values())
+
+    # todo for items count
+    vaccines_count, vaccines_used_count, ppe_kits_count, ppe_kits_used_count, ventilator_count = items_count()
 
     context = {
         'all_patients': all_patients,
@@ -156,6 +179,22 @@ def dashboard(request):
         'admitted_patients_count':  admitted_patients_count,
         'non_ventilator_count':  non_ventilator_count,
         'ventilator_patients_count':  ventilator_patients_count,
+
+        # todo items count dashboard right end
+        'vaccines_count_unused': vaccines_count-vaccines_used_count,
+        'vaccines_used_count': vaccines_used_count,
+        'ventilator_count_unused': ventilator_count-ventilator_patients_count,
+        # also use ventilator_patients_count in items
+        'ppe_kits_count_unused': ppe_kits_count-ppe_kits_used_count,
+        'ppe_kits_used_count': ppe_kits_used_count,
+
+        # todo items count percentage
+        'vaccines_count_unused_percentage': percentage_calculator_two_input(vaccines_count-vaccines_used_count, vaccines_count-vaccines_used_count, vaccines_used_count),
+        'vaccines_used_count_percentage': percentage_calculator_two_input(vaccines_used_count, vaccines_count-vaccines_used_count, vaccines_used_count),
+        'ppe_kits_count_unused_percentage':  percentage_calculator_two_input(ppe_kits_count-ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count),
+        'ppe_kits_used_count_percentage':  percentage_calculator_two_input(ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count),
+
+
     }
     return render(request, 'dashboard.html', context)
 # todo ----------part of dashboard ends here----------------------------------
