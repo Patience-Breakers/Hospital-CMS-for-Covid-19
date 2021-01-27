@@ -45,7 +45,7 @@ def doctor_list_calc_for_dashboard_pie():
 
 
 def bed_list_calc_for_dashboard_pie():
-    all_rooms = Room.objects.all()
+    all_rooms = Room.objects.all().exclude(room_no="-----")
     total_no_of_rooms = all_rooms.count()
     occupied_rooms = 0
     for i in all_rooms:
@@ -217,7 +217,7 @@ def search(request):
 
 
 def bedavailability(request):
-    all_rooms_objects = Room.objects.all()
+    all_rooms_objects = Room.objects.all().exclude(room_no="-----")
     max_rooms_on_floor = 6
 
     context = {
@@ -348,3 +348,10 @@ def bedforpatient(request, bedno):
 
         }
     return render(request, 'patientsfrombedavailability.html', context)
+
+# todo Edit items
+
+
+def edititems(request):
+    context = {}
+    return render(request, 'edititems.html', context)

@@ -16,10 +16,12 @@
     <h1 class="text-center my-5 header display-4">Add Patient</h1>
 
     <div class="row">
-        <div class="col-md block-to-disappear-in-mobile">
+        <div class="col-md-6 block-to-disappear-in-mobile ">
             <img src="{% static '/svg/addpatient.svg' %}" width="100%" alt="Add patient image vector">
+            <h1 class="display-4 header my-5 text-center" style="color:rgba(83, 0, 0, 0.603);">Note</h1>
+            <h4>Please add Decreased and recovered patients with room no "-----" </h4>
         </div>
-        <div class="col-md">
+        <div class="col-md-6">
             <form action="/addpatient" method="post" class="form-group">
                 {% csrf_token %}
                 <ul class="form-group">

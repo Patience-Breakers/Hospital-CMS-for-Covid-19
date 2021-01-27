@@ -21,6 +21,5 @@ urlpatterns = [
     path("search", views.search, name='search'),
     path("addpatient", views.addpatient, name='addpatient'),
     path("adddoctor", views.adddoctor, name='adddoctor'),
-
-
+    path("edititems", views.edititems, name="edititems"),
 ]

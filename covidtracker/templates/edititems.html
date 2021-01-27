@@ -1,0 +1,28 @@
+{% extends 'innerbase.html' %}
+{% load static %}
+
+{% block title %}Edit Items form Page | The Covid Tracker for Hospitals |{% endblock %}
+{% block cssLinks %}
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="header display-4 text-center my-5">Edit Items</h1>
+    <div class="row">
+        <div class="col-md-6 block-to-disappear-in-mobile">
+            <img src="{% static '/svg/edit-items.svg' %}" alt="Image to add items" width="100%">
+        </div>
+        <div class="col-md-6">
+            <form action="/edit" method="POST">
+                {% csrf_token %}
+                <input type="text" value="6">
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block JS %}
+{% endblock %}
