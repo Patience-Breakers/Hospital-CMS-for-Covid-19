@@ -275,6 +275,14 @@ a.highlight {
 .footer-links li a {
   text-decoration: wavy;
 }
+.image-footer {
+  transition: all 0.3s ease-out;
+}
+.image-footer:hover {
+  opacity: 0.5;
+  color: black;
+  transform: scale(1.01);
+}
 /*
    *foooter end
 */
