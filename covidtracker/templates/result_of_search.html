@@ -8,37 +8,108 @@
 
 {% block body %}
 <div class="container">
-    <h1 class="text-center heading">Search Result</h1>
 
+    <div class="row">
+        <div class="col-md-6 ">
+            <h1 class="text-center mt-5 header display-4">Search Result</h1>
+            <h6 class="text-center mb-5">for '{{query}}'</h6>
+        </div>
+        <div class="col-md-4 d-flex align-items-center  flex-row-reverse">
+            <form class="form-inline" action="/search" method="POST">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" name="name" type="search" placeholder="Search Patient"
+                    aria-label="Search" />
+                <button type="submit" style="background-color: #ffffff00;border:none;">
+                    <img src="{% static '/icons/search-icon.svg' %}" width="30px" alt="search button">
+                </button>
+            </form>
+        </div>
+        <div class="col-md-2  d-flex align-items-center">
+            <a href="/addpatient">
+                <img src="{% static '/icons/plus.svg' %}" height="50px" alt="Add the patient">
+            </a>
+        </div>
 
-    <h5 class="text-center my-1">for '{{query}}'</h5>
-    <div class="container my-3">
-        <ul class="list-group">
-            <li class="list-group-item">
-                <form class="form-inline" action="/search" method="POST">
-                    {% csrf_token %}
-                    <input class="form-control mr-sm-2" name="name" type="search" placeholder="Search Patient"
-                        aria-label="Search" />
-                    <input class="btn btn-danger my-2 my-sm-0" type="submit">
-
-                    </input>
-                </form>
-            </li>
-        </ul>
     </div>
     <ul class="list-group">
+        <h1 class="text-center heading">Admitted Patients</h1>
+
         {% for patient in all_search_patients_acc_to_name %}
-        <a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+        {% if patient.decreased %}
+        {% elif patient.recovered %}
+        {% else %}
+        <div class="row">
+            <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
 
-            <li
-                class="list-group-item  {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
-                <h4>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h4>
+                    <li
+                        class="list-group-item list-group-item-action {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
+                        <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
 
-            </li>
-        </a>
+                    </li>
+                </a></div>
+            <div class="col-1 text-center align-self-center">
+
+                <a href="/deletePatient/{{patient.patient_id}}">
+                    <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
+                </a>
+            </div>
+
+        </div>
+
+        {% endif %}
+
         {% empty %}
-        <li class="list-group-item list-group-item-action">NO ITEMS ACCORDING TO YOUR SEARCH</li>
+        <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
         {% endfor %}
+
+        <h1 class="text-center heading">Recovered Patients</h1>
+        {% for patient in all_search_patients_acc_to_name %}
+        {% if patient.recovered %}
+        <div class="row">
+            <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+
+                    <li class="list-group-item list-group-item-action ">
+                        <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
+
+                    </li>
+                </a></div>
+            <div class="col-1 text-center align-self-center">
+
+                <a href="/deletePatient/{{patient.patient_id}}">
+                    <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
+                </a>
+            </div>
+
+        </div>
+        {% endif %}
+        {% empty %}
+        <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
+        {% endfor %}
+
+        <h1 class="text-center heading">Decreased Patients</h1>
+        {% for patient in all_search_patients_acc_to_name %}
+        {% if patient.decreased %}
+        <div class="row">
+            <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+
+                    <li class="list-group-item list-group-item-action ">
+                        <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
+
+                    </li>
+                </a></div>
+            <div class="col-1 text-center align-self-center">
+
+                <a href="/deletePatient/{{patient.patient_id}}">
+                    <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% empty %}
+        <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
+        {% endfor %}
+
+
     </ul>
 </div>
 
