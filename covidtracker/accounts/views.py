@@ -117,7 +117,7 @@ def dashboard_top():
 
 
 def items_count():
-    item = ItemsTotalCount.objects.get(pk=1)
+    item = ItemsTotalCount.objects.last()
     vaccines_count = item.vaccines
     vaccines_used_count = item.vaccines_used
     ppe_kits_count = item.ppe_kits

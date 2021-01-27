@@ -77,6 +77,7 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
                     data-bs-toggle="list" href="#list-bedused" role="tab" aria-controls="bedused"><b>Beds</b></a>
             </div>
         </div>
+        <!--todo added the script tag here so that I can render the site fast-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
             integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
             crossorigin="anonymous"></script>
@@ -329,7 +330,14 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
             </div>
         </div>
         <div class="col-md-4 ">
-            <h2 class="text-center header display-6 my-5">Items Availability</h2>
+            <div class="row">
+                <div class="col-10 d-flex align-items-center">
+                    <h2 class="text-center header display-6 my-5">Items Availability</h2>
+                </div>
+                <div class="col-2 d-flex  flex-row-reverse align-items-center">
+                    <a href="/"><img src="{% static '/icons/edit-icon.svg' %}" width="40px" alt="Edit"></a>
+                </div>
+            </div>
             <div class="progress-bar-for-vaccine mb-3">
                 <h5>Vaccines</h5>
                 <div class="progress">
