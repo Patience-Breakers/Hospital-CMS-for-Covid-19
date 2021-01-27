@@ -3,9 +3,11 @@
 
 {% block title %}Edit Items form Page | The Covid Tracker for Hospitals |{% endblock %}
 {% block cssLinks %}
-
 {% endblock %}
 
+{% block linkBelow %}
+<link rel="stylesheet" href="{% static '/css/buttons.css' %}">
+{% endblock %}
 {% block body %}
 <div class="container">
     <h1 class="header display-4 text-center my-5">Edit Items</h1>
@@ -14,9 +16,29 @@
             <img src="{% static '/svg/edit-items.svg' %}" alt="Image to add items" width="100%">
         </div>
         <div class="col-md-6">
-            <form action="/edit" method="POST">
+            <form action="/edititems" method="POST">
                 {% csrf_token %}
-                <input type="text" value="6">
+                <label for="totalvaccines" class="form-label">Total Vaccines</label>
+                <input type="text" class="mb-1" name="totalvaccines" id="totalvaccines" value="{{item1.vaccines}}"
+                    placeholder="Total Vaccines Available">
+
+                <label for="vaccinesused" class="form-label">Vaccines Used</label>
+                <input type="text" class="mb-1" name="vaccinesused" id="vaccinesused" value="{{item1.vaccines_used}}"
+                    placeholder="Vaccines Used">
+
+                <label for="totalppekits" class="form-label">Total PPE Kits</label>
+                <input type="text" class="mb-1" name="totalppekits" id="totalppekits" value="{{item1.ppe_kits}}"
+                    placeholder="Total PPE Kits Available">
+
+                <label for="ppekitsused" class="form-label">PPE Kits Used</label>
+                <input type="text" class="mb-1" name="ppekitsused" id="ppekitsused" value="{{item1.ppe_kits_used}}"
+                    placeholder="PPE Kits Used">
+
+                <label for="ventilators" class="form-label">Total Ventilators</label>
+                <input type="text" class="mb-1" name="ventilators" id="ventilators" value="{{item1.ventilator}}"
+                    placeholder="Total Ventilators Available">
+                <!--todo Submit button-->
+                <input type="submit" class="my-2 btn btn-block btn-red-block">
             </form>
         </div>
     </div>

@@ -353,5 +353,16 @@ def bedforpatient(request, bedno):
 
 
 def edititems(request):
-    context = {}
+    item = ItemsTotalCount.objects.get(pk=1)
+    if request.method == 'POST':
+        item = ItemsTotalCount.objects.get(pk=1)
+        item.vaccines = request.POST.get('totalvaccines', '')
+        item.vaccines_used = request.POST.get('vaccinesused', '')
+        item.ppe_kits = request.POST.get('totalppekits', '')
+        item.ppe_kits_used = request.POST.get('ppekitsused', '')
+        item.ventilator = request.POST.get('ventilators', '')
+        item.save()
+        return redirect('/dashboard/')
+
+    context = {'item1': item}
     return render(request, 'edititems.html', context)
