@@ -195,8 +195,6 @@ def dashboard(request):
         'ventilator_count_used_percentage': round(percentage_calculator_two_input(ventilator_patients_count,  ventilator_count-ventilator_patients_count, ventilator_patients_count)),
         'ppe_kits_count_unused_percentage':  round(percentage_calculator_two_input(ppe_kits_count-ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count)),
         'ppe_kits_used_count_percentage':  round(percentage_calculator_two_input(ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count)),
-
-
     }
     return render(request, 'dashboard.html', context)
 # todo ----------part of dashboard ends here----------------------------------
