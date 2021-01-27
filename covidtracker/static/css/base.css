@@ -275,41 +275,6 @@ a.highlight {
 .footer-links li a {
   text-decoration: wavy;
 }
-/*social media stuff on footer*/
-#github {
-  color: #ffffff;
-  padding: 5% 0% 5% 0%;
-}
-#github:hover {
-  color: black;
-  transform: scale(1.1);
-}
-#linkedin {
-  color: #ffffff;
-  padding: 5% 0% 5% 0%;
-}
-#linkedin:hover {
-  color: #005f92;
-  transform: scale(1.1);
-}
-#instagram {
-  color: #ffffff;
-  padding: 5% 0% 5% 0%;
-}
-#instagram:hover {
-  color: #3c0044;
-  transform: scale(1.1);
-}
-#twitter {
-  color: #ffffff;
-  padding: 5% 0% 5% 0%;
-}
-#twitter:hover {
-  color: #1bffec;
-  border: black;
-  transform: scale(1.1);
-}
-
 /*
    *foooter end
 */
