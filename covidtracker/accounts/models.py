@@ -2,9 +2,12 @@ from django.db import models
 
 
 class ItemsTotalCount(models.Model):
+    vaccines = models.IntegerField(default=0)
     ventilator = models.IntegerField(default=0)
     ppe_kits = models.IntegerField(default=0)
-    gloves = models.IntegerField(default=0)
+
+    vaccines_used = models.IntegerField(default=0)
+    ppe_kits_used = models.IntegerField(default=0)
 
 
 class Doctor (models.Model):
