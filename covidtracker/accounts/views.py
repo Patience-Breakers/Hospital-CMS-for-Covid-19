@@ -189,12 +189,12 @@ def dashboard(request):
         'ppe_kits_used_count': ppe_kits_used_count,
 
         # todo items count percentage
-        'vaccines_count_unused_percentage': percentage_calculator_two_input(vaccines_count-vaccines_used_count, vaccines_count-vaccines_used_count, vaccines_used_count),
-        'vaccines_used_count_percentage': percentage_calculator_two_input(vaccines_used_count, vaccines_count-vaccines_used_count, vaccines_used_count),
-        'ventilator_count_unused_percentage': percentage_calculator_two_input(ventilator_count-ventilator_patients_count,  ventilator_count-ventilator_patients_count, ventilator_patients_count),
-        'ventilator_count_used_percentage': percentage_calculator_two_input(ventilator_patients_count,  ventilator_count-ventilator_patients_count, ventilator_patients_count),
-        'ppe_kits_count_unused_percentage':  percentage_calculator_two_input(ppe_kits_count-ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count),
-        'ppe_kits_used_count_percentage':  percentage_calculator_two_input(ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count),
+        'vaccines_count_unused_percentage': round(percentage_calculator_two_input(vaccines_count-vaccines_used_count, vaccines_count-vaccines_used_count, vaccines_used_count)),
+        'vaccines_used_count_percentage': round(percentage_calculator_two_input(vaccines_used_count, vaccines_count-vaccines_used_count, vaccines_used_count)),
+        'ventilator_count_unused_percentage': round(percentage_calculator_two_input(ventilator_count-ventilator_patients_count,  ventilator_count-ventilator_patients_count, ventilator_patients_count)),
+        'ventilator_count_used_percentage': round(percentage_calculator_two_input(ventilator_patients_count,  ventilator_count-ventilator_patients_count, ventilator_patients_count)),
+        'ppe_kits_count_unused_percentage':  round(percentage_calculator_two_input(ppe_kits_count-ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count)),
+        'ppe_kits_used_count_percentage':  round(percentage_calculator_two_input(ppe_kits_used_count, ppe_kits_count-ppe_kits_used_count, ppe_kits_used_count)),
 
 
     }
