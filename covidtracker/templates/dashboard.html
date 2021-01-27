@@ -1,9 +1,6 @@
 {% extends 'innerbase.html' %} {% load static %} {% block title %}Dashboard of
 the Covid Tracker{% endblock %} {% block cssLinks %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-    integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-    crossorigin="anonymous"></script>
 
 {% endblock %}
 {% block linkBelow %}
@@ -80,7 +77,9 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
                     data-bs-toggle="list" href="#list-bedused" role="tab" aria-controls="bedused"><b>Beds</b></a>
             </div>
         </div>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+            crossorigin="anonymous"></script>
         <div class="col-md-6 align-self-center text-center">
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-age" role="tabpanel" aria-labelledby="list-age-list">
@@ -370,4 +369,7 @@ the Covid Tracker{% endblock %} {% block cssLinks %}
 </div>
 <!--todo PieCharts Ends Here -->
 
-{% endblock %} {% block JS %} {% endblock %}
+{% endblock %}
+{% block JS %}
+
+{% endblock %}
