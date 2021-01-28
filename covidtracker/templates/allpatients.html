@@ -5,6 +5,8 @@
 {% block cssLinks %}
 <link rel="stylesheet" href="{% static 'css/bed.css' %}">
 <link rel="stylesheet" href="{% static 'css/allpatients.css' %}">
+<link rel="stylesheet" href="{% static 'css/doctoravailability.css' %}">
+
 {% endblock %}
 
 {% block body %}
@@ -26,7 +28,7 @@
         </div>
         <div class="col-md-2  d-flex align-items-center">
             <a href="/addpatient">
-                <img src="{% static '/icons/plus.svg' %}" height="50px" alt="Add the patient">
+                <img src="{% static '/icons/plus.svg' %}" height="50px" alt="Add the patient" class="hover-item">
             </a>
         </div>
 
