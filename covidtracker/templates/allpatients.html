@@ -33,104 +33,141 @@
     </div>
 
 
-    <ul class="list-group">
-        <h1 class="text-center heading">Admitted Patients</h1>
-
-        {% for patient in all_patients_query_set %}
-        {% if patient.decreased %}
-        {% elif patient.recovered %}
-        {% else %}
-        <div class="row">
-            <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
-
-                    <li
-                        class="list-group-item list-group-item-action {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
-                        <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
-
-                    </li>
-                </a></div>
-            <div class="col-1 text-center align-self-center">
-
-                <a href="/deletePatient/{{patient.patient_id}}">
-                    <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
-                </a>
-            </div>
-
-        </div>
-
-        {% endif %}
-
-        {% empty %}
-        <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
-        {% endfor %}
-
-        <h1 class="text-center heading">Recovered Patients</h1>
-        {% for patient in all_patients_query_set %}
-        {% if patient.recovered %}
-        <div class="row">
-            <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
-
-                    <li class="list-group-item list-group-item-action ">
-                        <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
-
-                    </li>
-                </a></div>
-            <div class="col-1 text-center align-self-center">
-
-                <a href="/deletePatient/{{patient.patient_id}}">
-                    <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
-                </a>
-            </div>
-
-        </div>
-        {% endif %}
-        {% empty %}
-        <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
-        {% endfor %}
-
-        <h1 class="text-center heading">Decreased Patients</h1>
-        {% for patient in all_patients_query_set %}
-        {% if patient.decreased %}
-        <div class="row">
-            <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
-
-                    <li class="list-group-item list-group-item-action ">
-                        <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
-
-                    </li>
-                </a></div>
-            <div class="col-1 text-center align-self-center">
-
-                <a href="/deletePatient/{{patient.patient_id}}">
-                    <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
-                </a>
-            </div>
-        </div>
-        {% endif %}
-        {% empty %}
-        <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
-        {% endfor %}
-
-
+    <!--todo Doing again part with navigation- Starts here-->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">
+                <h5><b>Admitted Patients</b></h5>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">
+                <h5><b>Recovered Patients</b></h5>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">
+                <h5><b>Decreased Patients</b></h5>
+            </a>
+        </li>
     </ul>
-</div>
-<!--todo legend Starts here-->
-<div class="container">
-    <h1 class="text-center heading-legend">Legend</h1>
-    <div class="container">
-        <div class="row text-center">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <!--? Starts here admitted patients-->
+            <ul class="list-group my-5">
+                {% for patient in all_patients_query_set %}
+                {% if patient.decreased %}
+                {% elif patient.recovered %}
+                {% else %}
+                <div class="row">
+                    <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
 
-            <div class="col yellow list-group-item-warning  ">
-                Admitted
-            </div>
-            <div class="col red">
-                Ventilator
-            </div>
+                            <li
+                                class="list-group-item list-group-item-action {% if patient.room_no_and_bed_no.occupied %} list-group-item-warning  {% endif %} {% if patient.room_no_and_bed_no.ventilator %} list-group-item-danger {% endif %}">
+                                <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
 
+                            </li>
+                        </a></div>
+                    <div class="col-1 text-center align-self-center">
+
+                        <a href="/deletePatient/{{patient.patient_id}}">
+                            <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
+                        </a>
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+                {% empty %}
+                <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
+                {% endfor %}
+
+            </ul>
+            <!--todo legend Starts here-->
+            <div class="container">
+                <h1 class="text-center heading-legend">Legend</h1>
+                <div class="container">
+                    <div class="row text-center">
+
+                        <div class="col yellow list-group-item-warning  ">
+                            Admitted
+                        </div>
+                        <div class="col red">
+                            Ventilator
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--todo legend Ends here-->
+            <!--? Ends here admitted patients-->
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <!--? Starts here Recovered patients-->
+            <ul class="list-group my-5">
+                {% for patient in all_patients_query_set %}
+                {% if patient.recovered %}
+                <div class="row">
+                    <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+
+                            <li class="list-group-item list-group-item-action ">
+                                <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
+
+                            </li>
+                        </a></div>
+                    <div class="col-1 text-center align-self-center">
+
+                        <a href="/deletePatient/{{patient.patient_id}}">
+                            <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
+                        </a>
+                    </div>
+
+                </div>
+                {% endif %}
+                {% empty %}
+                <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
+                {% endfor %}
+            </ul>
+            <!--?Ends here Recovered patients-->
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <!--? Starts here Decreased patients-->
+            <ul class="list-group my-5">
+                {% for patient in all_patients_query_set %}
+                {% if patient.decreased %}
+                <div class="row">
+                    <div class="col-11"><a href="/patients/{{patient.patient_id}}" style="text-decoration: none;">
+
+                            <li class="list-group-item list-group-item-action ">
+                                <h5>Id-{{patient.patient_id}}. {{patient.name}}, Phone No: {{patient.phone}}</h5>
+
+                            </li>
+                        </a></div>
+                    <div class="col-1 text-center align-self-center">
+
+                        <a href="/deletePatient/{{patient.patient_id}}">
+                            <img src="{% static '/icons/delete.svg' %}" class="hover-item" width="40px" alt="Delete">
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+                {% empty %}
+                <li class="list-group-item list-group-item-action">NO PATIENTS IN DATABASE</li>
+                {% endfor %}
+            </ul>
+            <!--? Ends here Decreased patients-->
         </div>
     </div>
+    <!--todo Doing again part with navigation- Ends here-->
+
+
+
 </div>
-<!--todo legend Ends here-->
+
 
 {% endblock %}
 
