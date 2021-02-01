@@ -215,7 +215,10 @@ def search(request):
 
 
 def bedavailability(request):
-    all_rooms_objects = Room.objects.all().exclude(room_no="-----")
+    all_rooms_objects = Room.objects.all().exclude(
+        room_no="-----").order_by('room_no')
+
+    # todo *----------------------------------------------------------
     max_rooms_on_floor = 6
 
     context = {
